@@ -1,0 +1,409 @@
+/*
+#505050 - cinza escuro - texto
+#dddddd - cinza claro - fundo geral
+#feb41c - laranja
+#0a5f6b - petroleo - h1
+#ac0000 - bordo - h2
+*/
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+
+body {
+	font-family: helvetica, arial, sans-serif;
+	background-color: #dddddd;
+	color: #505050;
+	}
+    div.container {
+        margin: 0 auto; /* centralizando o conteÃºdo */
+        max-width: 1200px; /* largura mÃ¡xima que comporÃ¡ a grid */
+        width: 95%;
+        margin: -5px auto 0px auto;
+        overflow: hidden;
+        box-shadow: 0px 0px 10px rgba(0,0,0, 0.5);
+        padding: 0px;
+        background-color: white;
+    }
+    div#corpo {
+    
+    width: 1200px;
+    margin: -5px auto 0px auto;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.5);
+    padding: 0px;
+    }
+/* formatação de texto*/
+h1,h2,h3,h4,h5 {
+		font-family: 'Titillium Web', arial, sans-serif;
+	}
+h1 {
+	color: #0a5f6b;
+    letter-spacing: 1px;
+	font-size: 60px;
+    font-weight: 700;
+	text-align: center;
+	margin-top: 2px;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+h2 {
+	color: #ac0000;
+	font-size: 24px;
+  font-weight: 600;
+	text-align: left;
+	padding: 0px;
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+h3 {
+	color: #505050;
+	font-size: 22px;
+	text-align: left;
+	padding: 0px;
+    margin-top: -5px;
+    margin-bottom: -10px;
+}
+h4 {
+    color: #505050;
+    font-size: 18px;
+    text-align: left;
+    padding: 0px;
+    margin-top: -5px;
+    margin-bottom: -10px;
+}
+p {
+	font-size: 1em;
+	text-align: justify;
+}
+a {
+	color: #606060;
+	text-decoration: none;
+}
+    a:hover {
+	   text-decoration: underline;
+		}
+hr {
+    color: #ac0000;
+    border: 1px solid;
+}
+/* cabeçalho */
+.cabeca {
+    border-bottom: 5px #ac0000 solid;
+    height: auto;
+}
+header#cabecalho {
+	display: block;
+
+}
+
+.logoPRO_header {
+  text-align: left;
+  height: 70px;
+  padding: 0px;
+}
+/* configuração do texto do menu */
+
+.menu {
+  height: auto;
+  padding: 0px;
+}
+div.menu ul{
+list-style: none;
+font-family: 'Titillium Web', arial, sans-serif;
+font-size: 12px;
+font-weight: 600;
+letter-spacing:0.1em;
+text-transform: uppercase;
+position: relative;
+float: right;
+right: 2px;
+top: 12px;
+margin-right: auto;
+padding-left: 2px;
+}
+
+div.menu li {
+	/*display: inline-block;*/
+	background-color: #ffffff;
+
+	text-align: center;
+	width: 135px;
+	height: 45px;
+  padding-top: 5px;
+	margin: 2px;
+  border-radius: 2px;
+	transition: background-color 1s;
+}
+/* Faz os <li>s ficarem na horizontal */
+ul.menu-list > li{
+  float: left;
+  position: relative;
+  vertical-align: baseline;
+}
+div.menu li:hover {
+	color: #0a5f6b;
+    background-image: linear-gradient(to bottom, #ffffff, #e3e3e3);
+	background-color: #cccccc;
+    box-shadow: inset 0 1px 1px 0 rgba(255,255,255,.3), inset 0 -2px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.2);
+    
+}
+
+div.menu a {
+	color: #333333;
+	text-decoration: none;
+}
+
+div.menu a:hover {
+	color: #0a5f6b;
+	text-decoration: none;
+    text-shadow: 1px 1px 1px #ccffff;
+}
+ul.sub-menu {
+	display: none;
+}
+/* Mostra o submenu no evento de mouse hover */
+ul.menu-list > li:hover > .sub-menu {
+  display: block;
+}
+/* Configura o estilo do submenu */
+ul.menu-list > li > .sub-menu {
+  position: absolute;
+  font-size: 11px;
+  text-align: center;
+  top: 45px;
+  left: 0px;
+  z-index: 1000;
+  display: none;
+  background-color: gray;
+  width: 190px;
+}
+
+.sub-menu li {
+  width: 180px;
+  min-width: 180px;
+
+}
+
+/* Configura os links do submenu */
+.menu > .menu-list > li > .sub-menu > li > a {
+	padding: 5px 5px;
+
+}
+/* Clearfix para o menu */
+.menu:after {
+  content: '.';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+/* menu mobile */
+
+.ico-menu {
+  text-align: right;
+  padding: 10px 10px;
+  display: none;
+}
+
+/* corpo */
+
+figure {
+    margin: 0;
+	text-align: center;
+}
+
+article#assunto {
+	padding: 0px 50px;
+}
+/* Links em destaque*/
+
+.link-dest {
+  margin: 5px;
+  padding: 0px;
+  text-align: center;
+  align: middle;
+  opacity: 1;
+}
+/* notícias */
+.noticias {
+   background-color: #dddddd;
+   border-radius: 10px;
+   color: #505050;
+   height: 550px;
+   font-size: 16px;
+}
+.noticias a{
+    color: #ac0000;
+    font-size: 14px;
+}
+
+/* Formatação de Imagens com Legenda */
+figure.foto_legenda {
+  position: relative;
+
+}
+figure.foto_legenda img {
+  width: 100%;
+  height: 100%;
+}
+figure.foto_legenda figcaption {
+  opacity: 0.5;
+  position: absolute;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0.5;
+  color: white;
+  width:100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: opacity 1s;
+}
+
+figure.foto_legenda h2 {
+  color: white;
+}
+
+figure.foto_legenda:hover figcaption {
+  opacity: 1;
+}
+/* estatisticas*/
+.numeros {
+  clear: both;
+  background-image: url(../_imgs/bg_estatisticas.jpg);
+}
+.estatisticas {
+ height: 364px;
+ background-color: transparent;
+}
+.estat {
+  height: 350px;
+  align:middle;
+  background-color: transparent;
+  margin-top: 10%;
+  }
+.estat h2 {
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 62px;
+}
+.estat h3 {
+  text-align: center;
+  color: white;
+  font-size: 36px;
+}
+/* video*/
+
+.youtube {
+  text-align: center;
+  align-items: center;
+}
+
+/* footer */
+.rodape {
+    border-top: 3px #ac0000 solid;
+    background-color: #dddddd;
+}
+.tam-rodape {
+  height: auto;
+  /*background-color: transparent;*/
+}
+
+.tam-rodape figure
+{
+  margin: auto;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tam-rodape h4{
+  color: #505050;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+}
+.tam-rodape p{
+margin-top: -2px;
+text-align: left;
+}
+.news-footer
+{
+  width: 80%;
+}
+.newsInput
+{
+  background: #3d3d3c;
+  border-radius:10px;
+  border: none;
+  text-align: left;
+  padding-left: 10px;
+  height: 40px;
+  width: 80%;
+  margin: auto;
+  color: #a9aeb9;
+}
+
+.text-rodape {
+    color: #505050;
+    font-size: 12px;
+    background-color: transparent;
+}
+.text-rodape p{
+    color: #505050;
+    font-size: 12px;
+}
+#text-pro-footer {
+  text-align: justify;
+
+}
+/* assinatura rodape */
+.ass-rodape {
+    position: relative;
+    float: top;
+    height: 40px;
+    background-color: #3d3d3c;
+    color: white;
+}
+.ass-rodape p{
+    text-align: left;
+    padding: 10px;
+    font-size: 10px;
+    margin-top: 5px;
+}
+.icon-location
+{
+  float: left;
+}
+
+/* =========================================================*/
+/* Ajustes do Responsivo*/
+/* =========================================================*/
+@media screen and (max-width: 1025px){
+  
+}
+
+@media screen and (max-width: 768px){
+ .ico-menu {
+  display: block;
+  text-align: right;
+  }
+.menu-list {
+  display: none;
+}
+
+.youtube iframe{
+  width: 320px;
+  height: 204px;
+}
+.estat h2 {
+  font-size: 50px;
+}
+.estat h3 {
+  font-size: 24px;
+}
+

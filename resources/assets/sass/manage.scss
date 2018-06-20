@@ -1,0 +1,194 @@
+input[type="text"]:disabled
+{
+  border: 1px dashed #aaa;
+  background: #f0f0f0;
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.6);
+}
+#pageDescriptionInput:disabled   
+{
+  border: 1px dashed #aaa;
+  background: #f0f0f0;
+  box-shadow: 3px 3px 0px 0px;
+}
+.is-manager-card
+{
+  border: 1px dashed #aaa;
+  background: #f0f0f0;
+  box-shadow: 3px 3px 0px 0px;
+}
+.has-shadow
+{
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.6);
+}
+.has-dashed-border
+{
+  border: 1px dashed #aaa;
+  background: #f0f0f0;
+}
+.has-solid-border
+{
+  border: 1px solid #aaa;
+  background: #f0f0f0;
+}
+
+/* Cursor */
+[draggable=true] {
+cursor: move;
+}
+
+/* Scroll Bars */
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: cornSilk;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c2a9a9; 
+    border-radius: 10px;
+}
+
+.side-menu::-webkit-scrollbar {
+    width: 5px;
+    background-color: cornSilk;
+}
+
+/* Track */
+.side-menu::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 30px;
+}
+
+/* Handle */
+.side-menu::-webkit-scrollbar-thumb {
+    background: #c2a9a9; 
+    border-radius: 30px;
+}
+
+#admin-side-menu {
+  position: fixed;
+  top: 3.2rem;
+  left: -200px;
+  bottom: 0;
+  width: 200px;
+  background-color: white;
+  overflow-y: scroll;
+  z-index: 100;
+  transition: left 0.3s ease-in-out;
+  &.is-active {
+    left: 0;
+    transition: left 0.3s ease-in-out;
+  }
+  @include desktop {
+    left: 0;
+  }
+}
+
+.management-area {
+top: 4rem;
+right: 0;
+
+  @include desktop {
+    position: absolute;
+    left: 200px;
+  }
+
+}
+
+.flex-container {
+  margin: 10px 25px;
+}
+
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-list li ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.navbar-burger {
+  border: none;
+}
+
+#admin-slideout-button {
+  transition: 0.3s;
+  &.is-active {
+    transition: 0.3s;
+    transform: rotateY(180deg);
+  }
+}
+
+.title.is-admin {
+  font-weight: 300;
+}
+
+.widget-area {
+  min-height: 75px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+
+  &.author-widget {
+    .selected-author {
+      display: flex;
+      align-content: flex-start;
+      img {
+        border-radius: 25px;
+      }
+      .author {
+        margin: auto 0 auto 10px;
+        .subtitle {
+          font-weight: 300;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+
+  &.post-status-widget {
+    .status {
+      display: flex;
+      align-content: flex-start;
+      .status-icon {
+        min-width: 50px;
+        .icon {
+          width: 100%;
+          i {
+            text-align: center;
+          }
+        }
+      }
+      .status-details {
+        margin-left: 10px;
+        h4 {
+          font-weight: 400;
+          span.status-emphasis {
+            font-weight: 800;
+          }
+        }
+        p {
+          font-weight: 300;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+  &.publish-buttons-widget {
+    display: flex;
+    min-height: 50px;
+
+    .primary-action-button, .secondary-action-button {
+      flex: 1;
+      margin: 0 5px;
+    }
+  }
+}
