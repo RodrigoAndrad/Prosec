@@ -22,7 +22,7 @@
     <div class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item is-tab is-active">Gerenciador</a>
-        <a class="navbar-item is-tab">Website</a>
+        <a class="navbar-item is-tab" href="{{route('siteHomePage')}}" target="_blank">Website</a>
          <!-- <a class="navbar-item is-tab">Preview</a> -->
       </div> <!-- end of .navbar-start -->
 

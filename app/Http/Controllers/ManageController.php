@@ -8,8 +8,6 @@ use App\Page;
 use App\PageStatus;
 use App\Component;
 
-define('imagesURL',"http://{$_SERVER['HTTP_HOST']}/dev/prosecurity/website/public/images/");
-
 class ManageController extends Controller
 {
     public function index()
@@ -136,8 +134,6 @@ class ManageController extends Controller
 
     private function home(Page $page) {
         $banner = array();
-
-        //dd(json_encode($page->seoTags->toArray()));
         foreach ($page->buildPageComponents() as $component) {
             if ($component->id === 1) {
                 foreach ($component->elements as $element) {
@@ -165,9 +161,14 @@ class ManageController extends Controller
                         $box->imageSrc = $element->images[0]->src;
                         $box->imageAlt = $element->images[0]->alt;
                     }
-                    if ($element->links->count() > 0) {
+                   if ($element->links->count() > 0) {
                         $box->link = $element->links[0]->url;
                         $box->linkTarget = $element->links[0]->target;
+                        $box->linkValue = "Link Ativo";
+                    }
+                    else
+                    {
+                        $box->linkValue = "Link Inativo";   
                     }
                     if ($element->texts->count() > 0) {
                         $box->title = $element->texts[0]->content;
@@ -185,6 +186,11 @@ class ManageController extends Controller
                     if ($element->links->count() > 0) {
                         $highlight->link = $element->links[0]->url;
                         $highlight->linkTarget = $element->links[0]->target;
+                        $highlight->linkValue = "Link Ativo";
+                    }
+                    else
+                    {
+                        $highlight->linkValue = "Link Inativo";   
                     }
                     if ($element->texts->count() > 0) {
                         $highlight->title = $element->texts[0]->title;
@@ -202,6 +208,11 @@ class ManageController extends Controller
                         $post->link = $element->links[0]->url;
                         $post->linkTarget = $element->links[0]->target;
                         $post->linkText = $element->links[0]->text;
+                        $post->linkValue = "Link Ativo";
+                    }
+                    else
+                    {
+                        $post->linkValue = "Link Inativo";   
                     }
                     if ($element->texts->count() > 0) {
                         if(!empty($element->texts[0]->title))
@@ -225,6 +236,11 @@ class ManageController extends Controller
                         $lead->link = $element->links[0]->url;
                         $lead->linkTarget = $element->links[0]->target;
                         $lead->linkText = $element->links[0]->text;
+                        $lead->linkValue = "Link Ativo";
+                    }
+                    else
+                    {
+                        $lead->linkValue = "Link Inativo";   
                     }
                     if ($element->texts->count() > 0) {
                         if(!empty($element->texts[0]->title))
@@ -291,6 +307,11 @@ class ManageController extends Controller
                         $video->link = $element->links[0]->url;
                         $video->linkTarget = $element->links[0]->target;
                         $video->linkText = $element->links[0]->text;
+                        $video->linkValue = "Link Ativo";
+                    }
+                    else
+                    {
+                        $video->linkValue = "Link Inativo";   
                     }
                     if ($element->texts->count() > 0) {
                         if(!empty($element->texts[0]->title))

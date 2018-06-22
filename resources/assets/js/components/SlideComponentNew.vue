@@ -1,5 +1,5 @@
 <template>
-   <div @mouseleave="hideSlideControls($event, slideOrder)" @mouseover="showSlideControls($event, slideOrder )">
+   <draggable :list="slidesData" @start="drag=true" @end="drag=false" @mouseleave="hideSlideControls($event, slideOrder)" @mouseover="showSlideControls($event, slideOrder )">
         <div class="columns">
             <div class="column is-6">
                 <div name="order">{{ slideOrder + 1}}&ordm;</div>
@@ -30,7 +30,7 @@
                 </a>
             </div>
         </div>
-    </div> 
+    </draggable> 
 </template>
 
 <script>
@@ -40,10 +40,11 @@ export default {
             
         },
     props: [
-                'slideOrder',
-                'linkValue',
-                'imageSrc',
-                'imageAlt'
+            'slideKey',
+            'slideOrder',
+            'linkValue',
+            'imageSrc',
+            'imageAlt'
             ],
     mounted() {
         console.log('Component mounted.')

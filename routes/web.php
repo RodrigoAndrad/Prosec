@@ -24,7 +24,7 @@
 
 /* index page routes */
 //Route::get('index.html', 'WebsiteController@index');
-Route::get('/', 'WebsiteController@index');
+Route::get('/', 'WebsiteController@index')->name('siteHomePage');
 Route::redirect('index.html', url('/'), 301);
 Route::get('/24h.html', 'WebsiteController@index');
 Route::get('atuacao.html', 'WebsiteController@index');

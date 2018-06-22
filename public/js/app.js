@@ -1527,7 +1527,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   }
 
   if (true) {
-    var Sortable = __webpack_require__(57);
+    var Sortable = __webpack_require__(58);
     module.exports = buildDraggable(Sortable);
   } else if (typeof define == "function" && define.amd) {
     define(['sortablejs'], function (Sortable) {
@@ -1544,7 +1544,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(63);
+module.exports = __webpack_require__(73);
 
 
 /***/ }),
@@ -1555,22 +1555,29 @@ module.exports = __webpack_require__(63);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_buefy__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_ckeditor2__ = __webpack_require__(40);
 __webpack_require__(14);
 
 window.Vue = __webpack_require__(37);
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a, { defaultIconPack: 'fa' });
 
-Vue.component('text-input-component', __webpack_require__(40));
-Vue.component('text-area-input-component', __webpack_require__(43));
-Vue.component('seo-tags-component', __webpack_require__(46));
-Vue.component('slide-switch-component', __webpack_require__(49));
-Vue.component('slide-component', __webpack_require__(74));
-Vue.component('banner-slide-component-new', __webpack_require__(52));
-// Vue.component('banner-slide-component', require('./components/BannerSlideComponent.vue'));
-Vue.component('homepage-box-component', __webpack_require__(59));
-__webpack_require__(62);
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a, { defaultIconPack: 'fa' });
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_ckeditor2__["a" /* default */]);
+
+Vue.component('text-input-component', __webpack_require__(41));
+Vue.component('text-area-input-component', __webpack_require__(44));
+Vue.component('seo-tags-component', __webpack_require__(47));
+Vue.component('slide-switch-component', __webpack_require__(50));
+Vue.component('slide-component', __webpack_require__(89));
+Vue.component('banner-slide-component-new', __webpack_require__(56));
+Vue.component('highlight-component', __webpack_require__(60));
+Vue.component('homepage-box-component', __webpack_require__(63));
+Vue.component('news-component', __webpack_require__(66));
+Vue.component('leads-component', __webpack_require__(69));
+Vue.component('video-youtube-component', __webpack_require__(93));
+
+__webpack_require__(72);
 
 /***/ }),
 /* 14 */
@@ -41031,14 +41038,167 @@ module.exports = Vue$3;
 
 /***/ }),
 /* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export VueCkeditor */
+/* unused harmony export install */
+var VueCkeditor = function VueCkeditor() {
+  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var name = opts.name || 'VueCkeditor';
+  var inc = new Date().getTime();
+  return {
+    name: name,
+    props: {
+      name: {
+        type: String,
+        default: function _default() {
+          return "editor-".concat(++inc);
+        }
+      },
+      value: {
+        type: String
+      },
+      id: {
+        type: String,
+        default: function _default() {
+          return "editor-".concat(inc);
+        }
+      },
+      types: {
+        type: String,
+        default: function _default() {
+          return "classic";
+        }
+      },
+      config: {
+        type: Object,
+        default: function _default() {}
+      }
+    },
+    data: function data() {
+      return {
+        destroyed: false,
+        instanceValue: ''
+      };
+    },
+    computed: {
+      instance: function instance() {
+        return CKEDITOR.instances[this.id];
+      }
+    },
+    watch: {
+      value: function value(val) {
+        try {
+          if (this.instance) {
+            this.update(val);
+          }
+        } catch (e) {}
+      }
+    },
+    mounted: function mounted() {
+      this.create();
+    },
+    beforeDestroy: function beforeDestroy() {
+      this.destroy();
+    },
+    render: function render(h) {
+      return h('div', {
+        class: 'ckeditor'
+      }, [h('textarea', {
+        attrs: {
+          name: this.name,
+          id: this.id
+        },
+        props: {
+          types: this.types,
+          config: this.config
+        },
+        domProps: {
+          value: this.value
+        }
+      })]);
+    },
+    methods: {
+      create: function create() {
+        var _this = this;
+
+        if (typeof CKEDITOR === 'undefined') {
+          console.log('CKEDITOR is missing (http://ckeditor.com/)');
+        } else {
+          if (this.types === 'inline') {
+            CKEDITOR.inline(this.id, this.config);
+          } else {
+            CKEDITOR.replace(this.id, this.config);
+          }
+
+          this.instance.setData(this.value);
+          this.instance.on('instanceReady', function () {
+            _this.instance.setData(_this.value);
+          });
+          this.instance.on('change', this.onChange);
+          this.instance.on('blur', this.onBlur);
+          this.instance.on('focus', this.onFocus);
+          this.instance.on('fileUploadResponse', function () {
+            setTimeout(function () {
+              _this.onChange;
+            }, 0);
+          });
+        }
+      },
+      update: function update(val) {
+        if (this.instanceValue !== val) {
+          this.instance.setData(val, {
+            internal: false
+          });
+        }
+      },
+      destroy: function destroy() {
+        try {
+          if (!this.destroyed) {
+            this.instance.focusManager.blur(true);
+            CKEDITOR.removeAllListeners();
+            this.instance.destroy(true);
+            this.destroyed = true;
+          }
+        } catch (e) {}
+      },
+      onChange: function onChange() {
+        var html = this.instance.getData();
+
+        if (html !== this.value) {
+          this.$emit('input', html);
+          this.instanceValue = html;
+        }
+      },
+      onBlur: function onBlur() {
+        this.$emit('blur', this.instance);
+      },
+      onFocus: function onFocus() {
+        this.$emit('focus', this.instance);
+      }
+    }
+  };
+};
+var install = function install(Vue, opts) {
+  var Component = VueCkeditor(opts);
+  Vue.component(Component.name, Component);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (install);
+
+
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(41)
+var __vue_script__ = __webpack_require__(42)
 /* template */
-var __vue_template__ = __webpack_require__(42)
+var __vue_template__ = __webpack_require__(43)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -41077,7 +41237,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41159,7 +41319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -41292,15 +41452,15 @@ if (false) {
 }
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(44)
+var __vue_script__ = __webpack_require__(45)
 /* template */
-var __vue_template__ = __webpack_require__(45)
+var __vue_template__ = __webpack_require__(46)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -41339,7 +41499,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41421,7 +41581,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -41565,15 +41725,15 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(47)
+var __vue_script__ = __webpack_require__(48)
 /* template */
-var __vue_template__ = __webpack_require__(48)
+var __vue_template__ = __webpack_require__(49)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -41612,7 +41772,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41644,7 +41804,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -41696,15 +41856,15 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(51)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(52)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -41743,7 +41903,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41772,7 +41932,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -41816,15 +41976,18 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(53)
+var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(59)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -41863,7 +42026,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 53 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41916,97 +42079,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 }));
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "panel-content m-b-30" },
-    [
-      _c(
-        "draggable",
-        {
-          staticClass: "columns m-r-5 m-l-5 m-t-5",
-          attrs: { list: _vm.slidesData },
-          on: {
-            start: function($event) {
-              _vm.drag = true
-            },
-            end: function($event) {
-              _vm.drag = false
-            }
-          }
-        },
-        _vm._l(_vm.slidesData, function(slide, key) {
-          return _c(
-            "div",
-            { staticClass: "column is-manager-card box-component m-r-5 m-l-5" },
-            [
-              _c("slide-component", {
-                attrs: {
-                  slideOrder: key,
-                  linkValue: slide.linkValue,
-                  imageSrc: slide.imageSrc,
-                  imageAlt: slide.imageAlt
-                }
-              })
-            ],
-            1
-          )
-        })
-      ),
-      _vm._v(" "),
-      _vm._m(0)
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-content" }, [
-      _c("div", { staticClass: "column" }, [
-        _c(
-          "a",
-          {
-            staticClass: "button is-primary is-pulled-right m-r-10",
-            attrs: {
-              href:
-                "http://localhost/dev/prosecurity/website/public/index.php/manage/slide/create"
-            }
-          },
-          [
-            _vm._v("\n            Criar Novo Slide"),
-            _c("span", { staticClass: "m-l-10" }, [
-              _c("i", { staticClass: "fa fa-image m-r-10" })
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-607996c1", module.exports)
-  }
-}
-
-/***/ }),
-/* 55 */,
-/* 56 */,
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
@@ -43556,16 +43629,343 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
 
 
 /***/ }),
-/* 58 */,
 /* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "panel-content m-b-30" },
+    [
+      _c(
+        "draggable",
+        {
+          staticClass: "columns m-r-5 m-l-5 m-t-5",
+          attrs: { list: _vm.slidesData },
+          on: {
+            start: function($event) {
+              _vm.drag = true
+            },
+            end: function($event) {
+              _vm.drag = false
+            }
+          }
+        },
+        _vm._l(_vm.slidesData, function(slide, key) {
+          return _c(
+            "div",
+            { staticClass: "column is-manager-card box-component m-r-5 m-l-5" },
+            [
+              _c("slide-component", {
+                attrs: {
+                  slideOrder: key,
+                  linkValue: slide.linkValue,
+                  imageSrc: slide.imageSrc,
+                  imageAlt: slide.imageAlt
+                }
+              })
+            ],
+            1
+          )
+        })
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-content" }, [
+      _c("div", { staticClass: "column" }, [
+        _c(
+          "a",
+          {
+            staticClass: "button is-primary is-pulled-right m-r-10",
+            attrs: {
+              href:
+                "http://localhost/dev/prosecurity/website/public/index.php/manage/slide/create"
+            }
+          },
+          [
+            _vm._v("\n            Criar Novo Slide"),
+            _c("span", { staticClass: "m-l-10" }, [
+              _c("i", { staticClass: "fa fa-image m-r-10" })
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-607996c1", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(60)
+var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(61)
+var __vue_template__ = __webpack_require__(62)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\HighlightComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-553159e0", Component.options)
+  } else {
+    hotAPI.reload("data-v-553159e0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+    components: {},
+    props: ['highlights', 'order', 'imageSrc', 'linkValue'],
+    mounted: function mounted() {
+        // console.log('Component mounted.')
+    },
+
+    methods: {
+        showHighlightsControls: function showHighlightsControls(event, key) {
+            $('#highlightsCtrl' + key).show();
+        },
+        hideHighlightsControls: function hideHighlightsControls(event, key) {
+            $('#highlightsCtrl' + key).hide();
+        }
+    },
+    data: function data() {
+        return {
+            highlightsData: this.highlights
+        };
+    }
+}, 'mounted', function mounted() {}));
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      on: {
+        mouseleave: function($event) {
+          _vm.hideHighlightsControls($event, _vm.order)
+        },
+        mouseover: function($event) {
+          _vm.showHighlightsControls($event, _vm.order)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-6" }, [
+          _c("div", { attrs: { name: "order" } }, [
+            _vm._v(_vm._s(_vm.order) + "º")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "column", attrs: { id: "switch" } },
+          [
+            _c("slide-switch-component", {
+              attrs: { linkValue: _vm.linkValue }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("figure", [
+          _c("img", { attrs: { src: this.imageSrc, width: "100%" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "columns p-t-5",
+          staticStyle: { display: "none" },
+          attrs: { id: "highlightsCtrl" + _vm.order }
+        },
+        [
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-link is-small is-block",
+                attrs: { id: "editlBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.highlightsEdit($event, _vm.order)
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-danger is-small is-block",
+                attrs: { id: "cancelBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.highlightsCancel($event, _vm.order)
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                  _vm._v("Apagar")
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
+      _c("i", { staticClass: "fa fa-pencil-square-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fa fa-trash" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-553159e0", module.exports)
+  }
+}
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(64)
+/* template */
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43604,7 +44004,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43625,63 +44025,173 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
-    components: {
-        draggable: __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default.a
-    },
-    props: ['box', 'order', 'imageSrc'],
+    components: {},
+    props: ['box', 'order', 'imageSrc', 'linkValue'],
     mounted: function mounted() {
         // console.log('Component mounted.')
     },
 
     methods: {
-        showSlideControls: function showSlideControls(event, key) {
-            $('#bannerCtrlSlide' + key).show();
+        showBoxControls: function showBoxControls(event, key) {
+            $('#boxCtrl' + key).show();
         },
-        hideSlideControls: function hideSlideControls(event, key) {
-            $('#bannerCtrlSlide' + key).hide();
+        hideBoxControls: function hideBoxControls(event, key) {
+            $('#boxCtrl' + key).hide();
         }
     },
     data: function data() {
         return {
-            boxData: this.box,
-            src: this.imageSrc
+            boxData: this.box
         };
     }
 }, 'mounted', function mounted() {}));
 
 /***/ }),
-/* 61 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", [_vm._v(_vm._s(_vm.order))]),
-    _vm._v(" "),
-    _c("div", [_c("h2", [_vm._v(_vm._s(_vm.boxData.title))])]),
-    _vm._v(" "),
-    _c("div", [
-      _c("figure", [
-        _c("img", { attrs: { src: this.imageSrc, width: "100%" } })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", [_vm._v(_vm._s(this.imageSrc))]),
-    _vm._v(" "),
-    _c("div", [_vm._v(_vm._s(_vm.boxData.imageAlt))]),
-    _vm._v(" "),
-    _c("div", [_vm._v(_vm._s(_vm.boxData.link))]),
-    _vm._v(" "),
-    _c("div", [_vm._v(_vm._s(_vm.boxData.linkTarget))])
-  ])
+  return _c(
+    "div",
+    {
+      on: {
+        mouseleave: function($event) {
+          _vm.hideBoxControls($event, _vm.order)
+        },
+        mouseover: function($event) {
+          _vm.showBoxControls($event, _vm.order)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-6" }, [
+          _c("div", { attrs: { name: "order" } }, [
+            _vm._v(_vm._s(_vm.order) + "º")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "column", attrs: { id: "switch" } },
+          [
+            _c("slide-switch-component", {
+              attrs: { linkValue: _vm.linkValue }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [_c("h2", [_vm._v(_vm._s(_vm.boxData.title))])]),
+      _vm._v(" "),
+      _c("div", [
+        _c("figure", [
+          _c("img", { attrs: { src: this.imageSrc, width: "100%" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "columns p-t-5",
+          staticStyle: { display: "none" },
+          attrs: { id: "boxCtrl" + _vm.order }
+        },
+        [
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-link is-small is-block",
+                attrs: { id: "editlBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.boxEdit($event, _vm.order)
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-danger is-small is-block",
+                attrs: { id: "cancelBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.boxCancel($event, _vm.order)
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                  _vm._v("Apagar")
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
+      _c("i", { staticClass: "fa fa-pencil-square-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fa fa-trash" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -43692,7 +44202,493 @@ if (false) {
 }
 
 /***/ }),
-/* 62 */
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(67)
+/* template */
+var __vue_template__ = __webpack_require__(68)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\NewsComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-492d3c83", Component.options)
+  } else {
+    hotAPI.reload("data-v-492d3c83", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+    components: {},
+    props: ['news', 'order', 'linkValue'],
+    mounted: function mounted() {
+        // console.log('Component mounted.')
+    },
+
+    methods: {
+        showNewsControls: function showNewsControls(event, key) {
+            $('#newsCtrl' + key).show();
+        },
+        hideNewsControls: function hideNewsControls(event, key) {
+            $('#newsCtrl' + key).hide();
+        }
+    },
+    data: function data() {
+        return {
+            newsData: this.news
+        };
+    }
+}, 'mounted', function mounted() {}));
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "content",
+      on: {
+        mouseleave: function($event) {
+          _vm.hideNewsControls($event, _vm.order)
+        },
+        mouseover: function($event) {
+          _vm.showNewsControls($event, _vm.order)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-6" }, [
+          _c("div", { attrs: { name: "order" } }, [
+            _vm._v(_vm._s(_vm.order) + "º")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "column", attrs: { id: "switch" } },
+          [
+            _c("slide-switch-component", {
+              attrs: { linkValue: _vm.linkValue }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [_c("h2", [_vm._v(_vm._s(_vm.news.title))])]),
+      _vm._v(" "),
+      _c("div", [_c("h5", [_vm._v(_vm._s(_vm.news.content))])]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "columns p-t-5",
+          staticStyle: { display: "none" },
+          attrs: { id: "newsCtrl" + _vm.order }
+        },
+        [
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-link is-small is-block",
+                attrs: { id: "editlBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.newsEdit($event, _vm.order)
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-danger is-small is-block",
+                attrs: { id: "cancelBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.newsCancel($event, _vm.order)
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                  _vm._v("Apagar")
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
+      _c("i", { staticClass: "fa fa-pencil-square-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fa fa-trash" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-492d3c83", module.exports)
+  }
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(70)
+/* template */
+var __vue_template__ = __webpack_require__(71)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\LeadsComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b4d5ab46", Component.options)
+  } else {
+    hotAPI.reload("data-v-b4d5ab46", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+    components: {},
+    props: ['leads', 'order', 'linkValue'],
+    mounted: function mounted() {
+        // console.log('Component mounted.')
+    },
+
+    methods: {
+        showLeadsControls: function showLeadsControls(event, key) {
+            $('#leadsCtrl' + key).show();
+        },
+        hideLeadsControls: function hideLeadsControls(event, key) {
+            $('#leadsCtrl' + key).hide();
+        }
+    },
+    data: function data() {
+        return {
+            leadsData: this.leads
+        };
+    }
+}, 'mounted', function mounted() {}));
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "content",
+      on: {
+        mouseleave: function($event) {
+          _vm.hideLeadsControls($event, _vm.order)
+        },
+        mouseover: function($event) {
+          _vm.showLeadsControls($event, _vm.order)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-6" }, [
+          _c("div", { attrs: { name: "order" } }, [
+            _vm._v(_vm._s(_vm.order) + "º")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "column", attrs: { id: "switch" } },
+          [
+            _c("slide-switch-component", {
+              attrs: { linkValue: _vm.linkValue }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("h3", { staticClass: "has-text-centered" }, [
+          _vm._v(_vm._s(_vm.leads.title))
+        ]),
+        _vm._v(" "),
+        _c("h1", { staticClass: "has-text-centered has-text-info" }, [
+          _vm._v(_vm._s(_vm.leads.content))
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "columns p-t-5",
+          staticStyle: { display: "none" },
+          attrs: { id: "leadsCtrl" + _vm.order }
+        },
+        [
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-link is-small is-block",
+                attrs: { id: "editlBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.leadsEdit($event, _vm.order)
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-danger is-small is-block",
+                attrs: { id: "cancelBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.leadsCancel($event, _vm.order)
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                  _vm._v("Apagar")
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
+      _c("i", { staticClass: "fa fa-pencil-square-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fa fa-trash" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b4d5ab46", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
 /***/ (function(module, exports) {
 
 var accordions = document.getElementsByClassName('has-submenu');
@@ -43732,31 +44728,36 @@ window.onload = function () {
 };
 
 /***/ }),
-/* 63 */
+/* 73 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(75)
+var __vue_script__ = __webpack_require__(90)
 /* template */
-var __vue_template__ = __webpack_require__(76)
+var __vue_template__ = __webpack_require__(91)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43795,15 +44796,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 75 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -43866,7 +44865,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 }, 'mounted', function mounted() {}));
 
 /***/ }),
-/* 76 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43938,28 +44937,26 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _c("div", [
-            _c("div", { staticClass: "column is-4" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "button is-danger is-small",
-                  attrs: { id: "pageDescriptionCancelBttn" + _vm.slideOrder },
-                  on: {
-                    onclick: function($event) {
-                      _vm.pageDescriptionCancel($event, _vm.slideOrder)
-                    }
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-danger is-small",
+                attrs: { id: "pageDescriptionCancelBttn" + _vm.slideOrder },
+                on: {
+                  onclick: function($event) {
+                    _vm.pageDescriptionCancel($event, _vm.slideOrder)
                   }
-                },
-                [
-                  _c("span", { staticClass: "p-l-10 p-r-10" }, [
-                    _vm._v("Apagar")
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
-                ]
-              )
-            ])
+                }
+              },
+              [
+                _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                  _vm._v("Apagar")
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ]
+            )
           ])
         ]
       )
@@ -44001,6 +44998,264 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-26b558fa", module.exports)
+  }
+}
+
+/***/ }),
+/* 92 */,
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\VideoYoutubeComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8f826b64", Component.options)
+  } else {
+    hotAPI.reload("data-v-8f826b64", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+    components: {},
+    props: ['id', 'order', 'linkValue', 'linkText', 'linkSrc', 'linkTarget'],
+    mounted: function mounted() {
+        // console.log('Component mounted.')
+    },
+
+    methods: {
+        showBoxControls: function showBoxControls(event, key) {
+            $('#videoCtrl' + this.order).show();
+        },
+        hideBoxControls: function hideBoxControls(event, key) {
+            $('#videoCtrl' + this.order).hide();
+        }
+    },
+    data: function data() {
+        return {};
+    }
+}, 'mounted', function mounted() {}));
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      on: {
+        mouseleave: function($event) {
+          _vm.hideBoxControls($event, this.order)
+        },
+        mouseover: function($event) {
+          _vm.showBoxControls($event, this.order)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-6" }, [
+          _c("div", { attrs: { name: "order" } }, [
+            _vm._v(_vm._s(_vm.order) + "º")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "column", attrs: { id: "switch" } },
+          [
+            _c("slide-switch-component", {
+              attrs: { linkValue: this.linkValue }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-2" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "column is-8" }, [
+          _c("iframe", {
+            attrs: {
+              width: "400",
+              height: "225",
+              src: this.linkSrc,
+              frameborder: "0",
+              allowfullscreen: "",
+              align: "middle"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column is-2" })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "columns p-t-5",
+          staticStyle: { display: "none" },
+          attrs: { id: "videoCtrl" + _vm.order }
+        },
+        [
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-link is-small is-block",
+                attrs: { id: "editlBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.videoEdit($event, _vm.order)
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-4" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button is-danger is-small is-block",
+                attrs: { id: "cancelBttn" + _vm.order },
+                on: {
+                  onclick: function($event) {
+                    _vm.videoCancel($event, _vm.order)
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                  _vm._v("Apagar")
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
+      _c("i", { staticClass: "fa fa-pencil-square-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small" }, [
+      _c("i", { staticClass: "fa fa-trash" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8f826b64", module.exports)
   }
 }
 

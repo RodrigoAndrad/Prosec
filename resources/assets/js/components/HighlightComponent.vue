@@ -1,5 +1,5 @@
 <template>
-    <div @mouseleave="hideBoxControls($event, order)" @mouseover="showBoxControls($event, order )">
+    <div @mouseleave="hideHighlightsControls($event, order)" @mouseover="showHighlightsControls($event, order )">
         <div class="columns">
             <div class="column is-6">
                 <div name="order">{{ order}}&ordm;</div>
@@ -8,11 +8,11 @@
                 <slide-switch-component :linkValue="linkValue"></slide-switch-component>
             </div>
         </div>
-        <div><h2>{{boxData.title}}</h2></div>
+        
         <div><figure><img :src="this.imageSrc" width="100%"></figure></div>
-        <div class="columns p-t-5" :id='"boxCtrl" + order' style="display: none;">
+        <div class="columns p-t-5" :id='"highlightsCtrl" + order' style="display: none;">
             <div class="column is-4">
-                <a class="button is-link is-small is-block" @onclick="boxEdit($event, order)" :id='"editlBttn" + order'>
+                <a class="button is-link is-small is-block" @onclick="highlightsEdit($event, order)" :id='"editlBttn" + order'>
                     <span>Editar</span>
                     <span class="icon is-small p-l-10 p-r-10">
                         <i class="fa fa-pencil-square-o" ></i>
@@ -23,7 +23,7 @@
                 <!-- <i class="fa fa-arrows p-l-50" aria-hidden="true"></i> -->
             </div>
             <div class="column is-4">
-                <a class="button is-danger is-small is-block" @onclick="boxCancel($event, order)" :id='"cancelBttn" + order'>
+                <a class="button is-danger is-small is-block" @onclick="highlightsCancel($event, order)" :id='"cancelBttn" + order'>
                     <span class="p-l-10 p-r-10">Apagar</span>
                     <span class="icon is-small">
                         <i class="fa fa-trash" ></i>
@@ -35,29 +35,28 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable'
 
 export default {
     components: {
             
         },
     props: [
-                'box', 'order', 'imageSrc', 'linkValue',
+                'highlights', 'order', 'imageSrc', 'linkValue',
             ],
     mounted() {
         // console.log('Component mounted.')
     },
     methods: {
-     showBoxControls: function(event, key) {
-        $('#boxCtrl'+key).show();
+     showHighlightsControls: function(event, key) {
+        $('#highlightsCtrl'+key).show();
      },
-     hideBoxControls: function(event, key) {
-        $('#boxCtrl'+key).hide();
+     hideHighlightsControls: function(event, key) {
+        $('#highlightsCtrl'+key).hide();
      }
     },
     data: function() {
         return {
-         boxData: this.box,
+         highlightsData: this.highlights,
         }
     },
     mounted () {

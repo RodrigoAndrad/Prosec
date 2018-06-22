@@ -13,9 +13,9 @@
                 <figure><img :src="slide.imageSrc" :alt="slide.imageAlt" width="100%"></figure>
                 <div class="columns p-t-5" :id='"bannerCtrlSlide" + key' style="display: none;">
                     <div class="column is-4">
-                        <a style="display: block;" class="button is-link is-small" @onclick="pageBannerEdit($event, key)" :id='"pageBannerEditlBttn" + key'>
+                        <a class="button is-link is-small is-block" @onclick="pageBannerEdit($event, key)" :id='"pageBannerEditlBttn" + key'>
                             <span>Editar</span>
-                            <span class="icon is-small p-l-10 p-r-10">
+                            <span class="icon is-small is-block">
                                 <i class="fa fa-pencil-square-o" ></i>
                             </span>
                         </a>
