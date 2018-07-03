@@ -20,6 +20,8 @@ class CreateLinksTable extends Migration
             $table->string('text');
             $table->string('url');
             $table->string('target')->default('_top');
+            $table->decimal('priority',10,0);
+            $table->decimal('order',10,0);
             $table->timestamps();
         });
     }

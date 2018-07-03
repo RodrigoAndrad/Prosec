@@ -2,7 +2,7 @@
     <div class="panel-content m-b-30">
         <draggable :list="slidesData" @start="drag=true" @end="drag=false" class="columns m-r-5 m-l-5 m-t-5">
             <div v-for="(slide, key) in slidesData" class="column is-manager-card box-component m-r-5 m-l-5">
-                <slide-component :slideOrder="key" :linkValue="slide.linkValue" :imageSrc="slide.imageSrc" :imageAlt="slide.imageAlt"></slide-component>
+                <slide-component :slideOrder="key" :linkValue=" slide.links[0] ? 'Link Ativo' : 'Link Inativo' " :image-dir="imageDir" :imageSrc="slide.images[0].src" :imageAlt="slide.images[0].alt"></slide-component>
             </div>
         </draggable>
         <div class="panel-content">
@@ -22,24 +22,28 @@ import draggable from 'vuedraggable'
 export default {
     components: {
             'draggable': draggable
-        },
+    },
     props: [
                 'slides',
-            ],
-    mounted() {
-        console.log('Component mounted.')
-    },
+                'imageDir',
+    ],
     data: function() {
         return {
+            
             slidesData: $.map(this.slides, function(value,index){
                 return[value]
             })
+            
+            // slidesData: this.slides
         }
     },
     mounted () {
 /*        this.slidesData =  $.map(this.slides, function(value,index){
             return[value]
         }); */
+        // console.log(this.slides.links[0] ? 'Link Ativo' : 'Link Inativo');
+        // console.log(this.slides.links[0].url);
+        // console.log(this.slidesData[0].links[0]);
     }
 }
 </script>

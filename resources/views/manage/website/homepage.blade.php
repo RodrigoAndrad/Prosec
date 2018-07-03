@@ -9,8 +9,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading"><h1><strong>Homepage</strong> - {{$page->slug}}</h1></div>
-				<text-input-component field-value="{{$page->title}}"></text-input-component>
-				<text-area-input-component field-value="{{$page->description}}"></text-area-input-component>
+				<text-input-component field-value="{{$page->title}}" placeholder-text="Digite aqui o título da página ..." name="pageTitle" label="Título"></text-input-component>
+				<text-area-input-component field-value="{{$page->description}}" placeholder-text="Digite aqui a descrição da página ..." name="pageDescription" label="Descrição"></text-area-input-component>
 				<b-collapse :open.sync="isOpen">
 					<div class="panel-heading" slot="trigger">
 							Tags de SEO
@@ -36,7 +36,7 @@
 						<i v-if="bannerIsOpen" id="bannerDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
 	                	<i v-else id="bannerDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 					</div>
-					<banner-slide-component-new :slides="{{ @json_encode($banner) }}"></banner-slide-component-new>
+					<banner-slide-component :slides="{{ @json_encode($banner['elements']) }}" :image-dir="{{@json_encode(asset('') . '/')}}"></banner-slide-component>
        		    </b-collapse>
        			<hr />
        		    <b-collapse :open.sync="boxIsOpen">
@@ -45,13 +45,13 @@
 	         	    	<i v-if="boxIsOpen" id="boxesDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
 		                <i v-else id="boxesDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 	         	    </div>
-	        	 	@foreach($boxes as $key => $box)
+	        	 	@foreach($boxes['elements'] as $key => $box)
 	        	 	@if($loop->index  === 0 ||$loop->index % 3 === 0)
-	        	 	<div class="columns panel-content p-l-20 p-t-20">
+	        	 	<div class="columns m-r-5 m-l-5 m-t-5">
 					@endif            	 		
-				    <div class="column is-manager-card box-component m-r-5 m-l-5">
-						<homepage-box-component :box="{{ @json_encode($box) }}" :order="{{$loop->index + 1}}" :image-src="{{@json_encode(asset($box->imageSrc))}}" :link-value="{{@json_encode($box->linkValue)}}"></homepage-box-component>
-					</div>	
+					    <div class="column is-manager-card box-component m-r-5 m-l-5">
+							<homepage-box-component :boxes="{{ @json_encode($box) }}" :order="{{$loop->index + 1}}" :image-dir="{{@json_encode(asset('') . '/')}}"></homepage-box-component>
+						</div>	
 				   @if($loop->iteration % 3 === 0)		            	
 				   </div>
 				   @endif
@@ -76,7 +76,7 @@
 		    	 		<div class="column is-3">
 		        		</div>
 					    <div class="column is-6 is-manager-card box-component m-r-5 m-l-5" >
-					    	<highlight-component :highlight="{{ @json_encode($highlights) }}" :order="1" :image-src="{{@json_encode(asset($highlights->imageSrc))}}" :link-value="{{@json_encode($highlights->linkValue)}}"></highlight-component>
+					    	<highlight-component :highlights="{{ @json_encode($highlights) }}" :order="1" :image-dir="{{@json_encode(asset('') . '/')}}"></highlight-component>
 		            	</div>
 		            	<div class="column is-3">
 		        		</div>
@@ -89,12 +89,12 @@
 					<i v-if="noticiasIsOpen" id="noticiasDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
 	                <i v-else id="noticiasDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 				</div>
-	        	@foreach($posts as $key => $post)
+	        	@foreach($posts['elements'] as $post)
 		        	@if($loop->index  === 0 ||$loop->index % 3 === 0)
-	    	 		<div class="columns panel-content p-l-20 p-t-20">
+	    	 		<div class="columns m-r-5 m-l-5 m-t-4">
 					@endif
 			        	<div class="column is-manager-card box-component m-r-5 m-l-5">
-			        		<news-component :news="{{ @json_encode($post) }}" :order="{{$loop->iteration}}" :image-src="{{@json_encode(asset($post->imageSrc))}}" :link-value="{{@json_encode($post->linkValue)}}"></news-component>
+			        		<news-component :news="{{ @json_encode($post) }}" :order="{{$loop->iteration}}" :image-dir="{{@json_encode(asset('') . '/')}}"></news-component>
 			            </div>
 			        @if($loop->iteration % 3 === 0)
 	        	 	</div>
@@ -108,17 +108,17 @@
 						<i v-if="leadsIsOpen" id="leadsDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
 	                <i v-else id="leadsDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 					</div>
-	        	 	@foreach($leads as $key => $lead)
+	        	 	@foreach($leads['elements'] as $lead)
 		        	 	@if($loop->index  === 0 ||$loop->index % 2 === 0)
-		    	 		<div class="columns panel-content p-l-20 p-t-20">
+		    	 		<div class="columns m-r-5 m-l-5 m-t-5">
 						@endif
 						    <div class="column is-manager-card box-component m-r-5 m-l-5">
-						    	<leads-component :rsa="{{@json_encode($lead)}}" :leads="{{ @json_encode($lead) }}" :order="{{$loop->iteration}}" :link-value="{{@json_encode($lead->linkValue)}}"></leads-component>
+						    	<leads-component :leads="{{ @json_encode($lead) }}" :order="{{$loop->iteration}}"></leads-component>
 			            	</div>
 						@if($loop->iteration % 2 === 0)
 		        	 	</div>
 		        	 	@endif
-				   @endforeach   
+				    @endforeach   
 					</div>   
 				</b-collapse>
 				<hr />
@@ -128,11 +128,11 @@
 						<i v-if="videosIsOpen" id="videosDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
 		            <i v-else id="videosDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 					</div>
-					<div class="columns panel-content p-l-20 p-t-20">
-			    	 	@foreach($videos as $key => $video)
+					<div class="columns m-r-5 m-l-5 m-t-5">
+			    	 	@foreach($videos['elements'] as $video)
 						    <div class="column is-manager-card box-component m-r-5 m-l-5">
-						    	@if(!empty($video->link))
-			                    	<video-youtube-component id="{{$key}}" order="{{$loop->iteration}}" :link-value="{{@json_encode($video->linkValue)}}" link-src="{{$video->link}}" link-text="{{@json_encode($video->linkText)}}" link-target="{{@json_encode($video->linkTarget)}}"></video-youtube-component>
+						    	@if(!empty($video['links'][0]))
+			                    	<video-youtube-component :videos="{{ @json_encode($video) }}" order="{{$loop->iteration}}"></video-youtube-component>
 								@endif
 			            	</div>
 					   @endforeach   

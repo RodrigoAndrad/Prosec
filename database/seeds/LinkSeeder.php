@@ -17,6 +17,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Link do Banner 1 da Homepage',
             'url' => 'Link do Banner 1 da Homepage',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -26,6 +28,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Link do Banner 2 da Homepage',
             'url' => 'Link do Banner 2 da Homepage',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -35,6 +39,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Link do Banner 3 da Homepage',
             'url' => 'Link do Banner 3 da Homepage',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -44,6 +50,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Serviços',
             'url' => 'servicos.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -53,6 +61,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Intelligent Service',
             'url' => 'http://www.intelligentservice.com.br',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -62,6 +72,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Vigilância Patrimonial',
             'url' => 'vig-patrimonial.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -71,6 +83,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Áreas De Atuação',
             'url' => 'atuacao.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -80,6 +94,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Fale Conosco',
             'url' => 'fale-conosco.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -89,6 +105,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Solicite Uma Proposta',
             'url' => 'proposta.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('links')->insert([
@@ -98,6 +116,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Saiba mais',
             'url' => 'http://prosecurity.com.br/pronews/roubo-e-furto-de-celular/',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('links')->insert([
@@ -107,6 +127,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Saiba mais',
             'url' => 'http://prosecurity.com.br/pronews/roubo-e-furto-de-celular/',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('links')->insert([
@@ -116,6 +138,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Saiba mais',
             'url' => 'http://prosecurity.com.br/pronews/roubo-e-furto-de-celular/',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -125,6 +149,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Saiba mais',
             'url' => 'https://www.youtube.com/embed/j09zBxqGjMo?list=PLdlfJldFC1fRyE8y7BxmHTNhoWhIbdZCE',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -134,6 +160,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Saiba mais',
             'url' => 'https://www.youtube.com/embed/videoseries?list=PLdlfJldFC1fRK0AicP7YTllmNPB-_ZlDf',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -143,6 +171,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Clique Aqui!',
             'url' => 'http://prosecurity.com.br/tutorial-pro-control/procontrol.pdf',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -152,6 +182,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Clique Aqui!',
             'url' => 'http://prosecurity.com.br/tutorial-pro-control/procontrol.pdf',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('links')->insert([
@@ -161,6 +193,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Conheça',
             'url' => 'conheca.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 18,
@@ -169,6 +203,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Responsabilidade Social',
             'url' => 'resp-social.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 19,
@@ -177,6 +213,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Pro Ação Criança',
             'url' => 'pro-acao.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 20,
@@ -185,6 +223,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Nossos Clientes',
             'url' => 'clientes.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 21,
@@ -193,6 +233,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Política de RH',
             'url' => 'rh.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 22,
@@ -201,6 +243,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Últimas Notícias',
             'url' => 'http://prosecurity.com.br/pronews/',
             'target' => '_blank',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 23,
@@ -209,6 +253,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Solicite uma Proposta',
             'url' => 'proposta.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 24,
@@ -217,6 +263,8 @@ class LinkSeeder extends Seeder {
             'text' => 'SAC',
             'url' => 'sac.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 25,
@@ -225,6 +273,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Trabalhe Conosco',
             'url' => 'trabalhe-conosco.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 26,
@@ -233,6 +283,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Cadastro de Fornecedores',
             'url' => 'fornecedores.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('links')->insert([
             'id' => 27,
@@ -241,6 +293,8 @@ class LinkSeeder extends Seeder {
             'text' => 'Endereços e Telefones',
             'url' => 'contatos.html',
             'target' => '_top',
+            'priority' => 1,
+            'order' => 1,
         ]);
     }
 

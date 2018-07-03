@@ -5,11 +5,13 @@
                 <div name="order">{{ order}}&ordm;</div>
             </div>
             <div class="column" id="switch">
-                <slide-switch-component :linkValue="linkValue"></slide-switch-component>
+                <slide-switch-component :linkValue=" this.boxes.links[0] ? 'Link Ativo' : 'Link Inativo' "></slide-switch-component>
             </div>
         </div>
-        <div><h2>{{boxData.title}}</h2></div>
-        <div><figure><img :src="this.imageSrc" width="100%"></figure></div>
+        <span v-if="this.boxes.texts[0] && this.boxes.texts[0].title" class="content has-text-centered has-text-info"><h1>{{this.boxes.texts[0].title}}</h1></span>
+        <span v-if="this.boxes.texts[0] && this.boxes.texts[0].subtitle" class="content has-text-centered has-text-info"><h1>{{this.boxes.texts[0].subtitle}}</h1></span>
+        <span v-if="this.boxes.texts[0] && this.boxes.texts[0].content" class="content has-text-centered has-text-info"><h3>{{this.boxes.texts[0].content}}</h3></span>
+        <div><figure><img :src="this.imageDir + '/' + this.boxes.images[0].src" width="100%"></figure></div>
         <div class="columns p-t-5" :id='"boxCtrl" + order' style="display: none;">
             <div class="column is-4">
                 <a class="button is-link is-small is-block" @onclick="boxEdit($event, order)" :id='"editlBttn" + order'>
@@ -20,7 +22,7 @@
                 </a>
             </div>
             <div class="column is-4">
-                <!-- <i class="fa fa-arrows p-l-50" aria-hidden="true"></i> -->
+                
             </div>
             <div class="column is-4">
                 <a class="button is-danger is-small is-block" @onclick="boxCancel($event, order)" :id='"cancelBttn" + order'>
@@ -42,11 +44,8 @@ export default {
             
         },
     props: [
-                'box', 'order', 'imageSrc', 'linkValue',
-            ],
-    mounted() {
-        // console.log('Component mounted.')
-    },
+                'boxes', 'order', 'imageDir',
+    ],
     methods: {
      showBoxControls: function(event, key) {
         $('#boxCtrl'+key).show();
@@ -57,7 +56,7 @@ export default {
     },
     data: function() {
         return {
-         boxData: this.box,
+         boxData: this.boxes,
         }
     },
     mounted () {

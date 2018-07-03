@@ -21,6 +21,8 @@ class CreateImagesTable extends Migration
             $table->string('alt')->nullable(FALSE);
             $table->string('src')->default(NULL);
             $table->string('srcset')->default(NULL);
+            $table->decimal('priority',10,0);
+            $table->decimal('order',10,0);
             $table->timestamps();
         });
     }

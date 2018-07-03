@@ -18,6 +18,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem 1 do Banner da Homepage',
             'src' => 'banner1.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -28,6 +30,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem 2 do Banner da Homepage',
             'src' => 'banner2.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -38,6 +42,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem 3 do Banner da Homepage',
             'src' => 'banner3.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -48,6 +54,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem do Background do Box 1 da Homepage',
             'src' => 'box1.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -58,6 +66,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem do Background do Box 2 da Homepage',
             'src' => 'box2.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -68,6 +78,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem do Background do Box 3 da Homepage',
             'src' => 'box3.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -78,6 +90,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem do Background do Box 4 da Homepage',
             'src' => 'box4.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -88,6 +102,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem do Background do Box 5 da Homepage',
             'src' => 'box5.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -98,6 +114,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem do Background do Box 6 da Homepage',
             'src' => 'box6.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -108,6 +126,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Arquivo de Imagem do Destaque da Homepage',
             'src' => 'destaque.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -118,6 +138,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -128,6 +150,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 1 da Página de Serviços',
             'src' => 'ico-serv-patrimomial.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -138,6 +162,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box1.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -148,6 +174,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 2 da Página de Serviços',
             'src' => 'ico-serv-pessoal.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -158,6 +186,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box2.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -168,6 +198,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 3 da Página de Serviços',
             'src' => 'ico-portaria.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -178,6 +210,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box3.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
                         
         DB::table('images')->insert([
@@ -188,6 +222,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 4 da Página de Serviços',
             'src' => 'ico-is.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -198,6 +234,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box4.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -208,6 +246,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 5 da Página de Serviços',
             'src' => 'ico-seg-eletronica.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -218,6 +258,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box5.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -228,6 +270,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 6 da Página de Serviços',
             'src' => 'ico-24h.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -238,6 +282,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box6.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -248,6 +294,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 7 da Página de Serviços',
             'src' => 'ico-procontrol.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -258,6 +306,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box7.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
        
         DB::table('images')->insert([
@@ -268,6 +318,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 8 da Página de Serviços',
             'src' => 'ico-limpeza.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -278,6 +330,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box8.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -288,6 +342,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Icone do Box 9 da Página de Serviços',
             'src' => 'ico-serv-geral.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -298,6 +354,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços',
             'src' => 'img-serv-box9.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
          DB::table('images')->insert([
@@ -308,6 +366,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Vigilância Patrimonial',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -318,6 +378,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Vigilância Pessoal e Escolta',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -328,6 +390,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Portaria, Controlador de Acesso e Recepção',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -338,6 +402,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Segurança Eletrônica',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -348,6 +414,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Monitoramento 24h',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -358,6 +426,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Pro Control',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -368,6 +438,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Limpeza e Conservação',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -378,6 +450,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Serviços Gerais',
             'src' => 'banner-servicos.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -388,6 +462,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página de Áreas de Atuação',
             'src' => 'banner-atuacao.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -398,6 +474,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página do Grupo',
             'src' => 'banner-grupo.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -408,6 +486,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Conheça o Grupo Pro Security',
             'src' => 'banner-grupo.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -418,6 +498,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Conheça o Grupo Pro Security',
             'src' => 'sindeprestem.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -428,6 +510,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Conheça o Grupo Pro Security',
             'src' => 'crs.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('images')->insert([
             'id' => 43,
@@ -437,6 +521,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Conheça o Grupo Pro Security',
             'src' => 'master_escola.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('images')->insert([
             'id' => 44,
@@ -446,6 +532,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Conheça o Grupo Pro Security',
             'src' => 'abralimp.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('images')->insert([
             'id' => 45,
@@ -455,6 +543,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Conheça o Grupo Pro Security',
             'src' => 'sesvesp.jpg',
             'srcset' => 'abrevis.jpg',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('images')->insert([
             'id' => 46,
@@ -464,6 +554,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Conheça o Grupo Pro Security',
             'src' => 'abrevis.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         
         DB::table('images')->insert([
@@ -474,6 +566,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Banner da página Responsabilidade Social',
             'src' => 'banner-grupo.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]); 
         DB::table('images')->insert([
             'id' => 48,
@@ -483,6 +577,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 1 da página Responsabilidade Social',
             'src' => 'pro_acao.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
         DB::table('images')->insert([
             'id' => 49,
@@ -492,6 +588,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 2 da página Responsabilidade Social',
             'src' => 'gol_de_letra.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);    
         DB::table('images')->insert([
             'id' => 50,
@@ -501,6 +599,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 3 da página Responsabilidade Social',
             'src' => 'samovis.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);    
         DB::table('images')->insert([
             'id' => 51,
@@ -510,6 +610,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 4 da página Responsabilidade Social',
             'src' => 'vila_da_praia.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);    
         DB::table('images')->insert([
             'id' => 52,
@@ -519,6 +621,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 5 da página Responsabilidade Social',
             'src' => 'santa_suzana.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);    
         DB::table('images')->insert([
             'id' => 53,
@@ -528,6 +632,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Pro Ação Crinaça',
             'src' => 'banner-grupo.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -538,6 +644,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do texto da página Pro Ação Criança',
             'src' => 'logo-pro-acao.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -548,6 +656,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 1 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao009.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -558,6 +668,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 1 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao009-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -568,6 +680,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 2 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao010.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -578,6 +692,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 2 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao010-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -588,6 +704,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 3 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao011.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -598,6 +716,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 3 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao011-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -608,6 +728,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 4 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao012.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -618,6 +740,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 5 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao012-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -628,6 +752,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 5 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao013.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -638,6 +764,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 5 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao013-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -648,6 +776,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 6 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao014.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -658,6 +788,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 6 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao014-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -668,6 +800,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 7 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao015.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -678,6 +812,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 7 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao015-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -688,6 +824,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem 8 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao016.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -698,6 +836,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Thumbnail da Imagem 8 do Carrossel de Fotos da Página Pro Ação Criança',
             'src' => 'ProAcao016-t.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -708,6 +848,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Pro Ação Crinaça Campanha',
             'src' => 'banner-grupo.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -718,6 +860,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do texto da página Pro Ação Crinaça Campanha',
             'src' => 'logo-pro-acao.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -728,6 +872,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Pro Ação Criança 2018',
             'src' => 'pro-acao-crianca-1024x576.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -738,6 +884,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Clientes',
             'src' => 'banner-grupo.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -748,6 +896,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 1 da página Clientes',
             'src' => '1_alle.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -758,6 +908,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 2 da página Clientes',
             'src' => '2_atech.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -768,6 +920,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 3 da página Clientes',
             'src' => '3_bg.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -778,6 +932,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 4 da página Clientes',
             'src' => '4_camargo_correa.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -788,6 +944,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 5 da página Clientes',
             'src' => '5_caraiga.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -798,6 +956,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 6 da página Clientes',
             'src' => '6_coferly.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -808,6 +968,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 7 da página Clientes',
             'src' => '7_col_joao_xxiii.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -818,6 +980,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 8 da página Clientes',
             'src' => '8_guilherme_d_v.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -828,6 +992,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 9 da página Clientes',
             'src' => '9_cpv.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -838,6 +1004,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 10 da página Clientes',
             'src' => '10_editar.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -848,6 +1016,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 11 da página Clientes',
             'src' => '11_enbrageo.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -858,6 +1028,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 12 da página Clientes',
             'src' => '12_equilibrio.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -868,6 +1040,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 13 da página Clientes',
             'src' => '13_estee_lauder.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -878,6 +1052,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 14 da página Clientes',
             'src' => '14_germania.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -888,6 +1064,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 15 da página Clientes',
             'src' => '15_gen_atlantic.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -898,6 +1076,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 16 da página Clientes',
             'src' => '16_g_hubert.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -908,6 +1088,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 17 da página Clientes',
             'src' => '17_hosp_paulista.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -918,6 +1100,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 18 da página Clientes',
             'src' => '18_loreal.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -928,6 +1112,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 19 da página Clientes',
             'src' => '19_kemira.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -938,6 +1124,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 20 da página Clientes',
             'src' => '20_lenc.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -948,6 +1136,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 21 da página Clientes',
             'src' => '21_lo_spazio.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -958,6 +1148,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 22 da página Clientes',
             'src' => '22_manager.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -968,6 +1160,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 23 da página Clientes',
             'src' => '23_marko.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -978,6 +1172,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 24 da página Clientes',
             'src' => '24_meng.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -988,6 +1184,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 25 da página Clientes',
             'src' => '25_open_center.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -998,6 +1196,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 26 da página Clientes',
             'src' => '26_new_kar.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1008,6 +1208,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 27 da página Clientes',
             'src' => '27_oxyplas.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1018,6 +1220,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 28 da página Clientes',
             'src' => '28_portal.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1028,6 +1232,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 29 da página Clientes',
             'src' => '29_probel.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1038,6 +1244,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 30 da página Clientes',
             'src' => '30_tapps.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1048,6 +1256,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 31 da página Clientes',
             'src' => '31_toktake.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1058,6 +1268,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Imagem do Box 32 da página Clientes',
             'src' => '32_vetorzero.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1068,6 +1280,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página RH',
             'src' => 'banner-grupo.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1078,6 +1292,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Fale Conosco',
             'src' => 'banner-faleconosco.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1088,6 +1304,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página SAC',
             'src' => 'banner-faleconosco.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
          DB::table('images')->insert([
@@ -1098,6 +1316,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Trabalhe Conosco',
             'src' => 'banner-faleconosco.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1108,6 +1328,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Cadastro de Fornecedores',
             'src' => 'banner-faleconosco.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1118,6 +1340,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Endereços e Telefones',
             'src' => 'banner-faleconosco.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1128,6 +1352,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Telefones Pro Security',
             'src' => 'tels.png',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
 
         DB::table('images')->insert([
@@ -1138,6 +1364,8 @@ class ImageSeeder extends Seeder {
             'alt' => 'Destaque da página Proposta',
             'src' => 'banner-proposta.jpg',
             'srcset' => '',
+            'priority' => 1,
+            'order' => 1,
         ]);
     }
 }

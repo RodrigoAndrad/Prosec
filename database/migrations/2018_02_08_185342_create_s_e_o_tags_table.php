@@ -24,6 +24,7 @@ class CreateSEOTagsTable extends Migration
             $table->string('content_name');
             $table->string('content_value');
             $table->decimal('priority',10,0);
+            $table->decimal('order',10,0);
             $table->timestamps();
 
             $table->foreign('page_id')->references('id')->on('pages');

@@ -17,6 +17,8 @@ class CreateElement extends Migration
             $table->increments('id');
             $table->text('name');
             $table->text('description');
+            $table->decimal('priority',10,0);
+            $table->decimal('order',10,0);
             $table->timestamps();
         });
     }

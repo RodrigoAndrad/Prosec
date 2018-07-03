@@ -5,14 +5,14 @@
                 <div name="order">{{ order}}&ordm;</div>
             </div>
             <div class="column" id="switch">
-                <slide-switch-component :linkValue="this.linkValue"></slide-switch-component>
+                <slide-switch-component :linkValue=" this.videos.links[0] ? 'Link Ativo' : 'Link Inativo' "></slide-switch-component>
             </div>
         </div>
         <div class="columns">
             <div class="column is-2">
             </div>
             <div class="column is-8">
-                <iframe width="400" height="225" :src="this.linkSrc" frameborder="0" allowfullscreen align="middle"></iframe>
+                <iframe width="400" height="225" :src="this.videos.links[0].url" frameborder="0" allowfullscreen align="middle"></iframe>
             </div>
             <div class="column is-2">
             </div>
@@ -27,7 +27,6 @@
                 </a>
             </div>
             <div class="column is-4">
-                <!-- <i class="fa fa-arrows p-l-50" aria-hidden="true"></i> -->
             </div>
             <div class="column is-4">
                 <a class="button is-danger is-small is-block" @onclick="videoCancel($event, order)" :id='"cancelBttn" + order'>
@@ -47,16 +46,9 @@ export default {
             
         },
     props: [
-                'id', 
+                'videos',
                 'order', 
-                'linkValue',
-                'linkText', 
-                'linkSrc',
-                'linkTarget',
-            ],
-    mounted() {
-        // console.log('Component mounted.')
-    },
+    ],
     methods: {
      showBoxControls: function(event, key) {
         $('#videoCtrl'+ this.order).show();

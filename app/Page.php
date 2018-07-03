@@ -40,27 +40,6 @@ class Page extends Model {
                         if (file_exists('images/'. basename($image->src))) {
                             $image->src = 'images/' . basename($image->src);
                         } 
-/*
-                        if(file_exists('images/' . $slug . basename($image->src))) {
-                            $image->src = 'images/' . $slug . basename($image->src);
-                        } 
-                        else if(file_exists('images/' . $slug .'/'. basename($image->src))) {
-                            $image->src = 'images/' . $slug . '/' . basename($image->src);
-                        }
-                         else if (file_exists('images/'. $image->src)) {
-                            $image->src = 'images/' . basename($image->src);
-                        } else if(file_exists('images/' . $slug .'/default/'. basename($image->src))) {
-                            $image->src = 'images/' . $slug . '/default/' . basename($image->src);
-                        } else if (file_exists('images/'. basename($image->src))) {
-                            $image->src = 'images/' . basename($image->src);
-                        } else if(file_exists('images/default/' . $slug .'/'. basename($image->src))) {
-                            $image->src = 'images/default/' . $slug .'/'. basename($image->src);
-                        } else if(file_exists('images/default/' . basename($image->src))) {
-                            $image->src = 'images/default/' . basename($image->src);
-                        } else {
-                            $image->src = 'images/default/missing.jpg';
-                        }
-*/                        
                     }
                 }
             }

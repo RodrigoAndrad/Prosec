@@ -1,5 +1,5 @@
 <template>
-   <draggable :list="slidesData" @start="drag=true" @end="drag=false" @mouseleave="hideSlideControls($event, slideOrder)" @mouseover="showSlideControls($event, slideOrder )">
+   <div @mouseleave="hideSlideControls($event, slideOrder)" @mouseover="showSlideControls($event, slideOrder )">
         <div class="columns">
             <div class="column is-6">
                 <div name="order">{{ slideOrder + 1}}&ordm;</div>
@@ -8,7 +8,7 @@
                 <slide-switch-component :linkValue="linkValue"></slide-switch-component>
             </div>
         </div>
-        <figure><img :src="imageSrc" :alt="imageAlt" width="100%"></figure>
+        <figure><img :src="this.imageDir + imageSrc" :alt="imageAlt" width="100%"></figure>
         <div class="columns p-t-5" :id='"bannerCtrlSlide" + slideOrder' style="display: none;">
             <div class="column is-4">
                 <a style="display: block;" class="button is-link is-small" @onclick="pageBannerEdit($event, slideOrder)" :id='"pageBannerEditlBttn" + slideOrder'>
@@ -30,7 +30,7 @@
                 </a>
             </div>
         </div>
-    </draggable> 
+    </div> 
 </template>
 
 <script>
@@ -40,15 +40,12 @@ export default {
             
         },
     props: [
-            'slideKey',
-            'slideOrder',
-            'linkValue',
-            'imageSrc',
-            'imageAlt'
+                'slideOrder',
+                'linkValue',
+                'imageSrc',
+                'imageAlt',
+                'imageDir',
             ],
-    mounted() {
-        console.log('Component mounted.')
-    },
     methods: {
      showSlideControls: function(event, key) {
         $('#bannerCtrlSlide' + key).show();
@@ -59,10 +56,11 @@ export default {
     },
     data: function() {
         return {
-            slidesData: $.map(this.slides, function(value,index){
-                return[value]
-            }) 
+            
         }
+    },
+    beforeMounted(){
+        
     },
     mounted () {
 

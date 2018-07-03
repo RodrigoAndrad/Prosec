@@ -17304,6 +17304,10 @@ a.is-muted:hover {
   }
 }
 
+.ckeditor {
+  width: 100%;
+}
+
 .m-t-0 {
   margin-top: 0px !important;
 }
@@ -17724,7 +17728,28 @@ a.is-muted:hover {
   border-radius: 5px !important;
 }
 
+.fake-textarea {
+  border: 1px dashed #aaa;
+  background: #f7f7f7;
+  -webkit-box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  cursor: not-allowed;
+  max-height: 10rem;
+  width: 100%;
+  overflow-y: scroll;
+  color: #7a7a7a;
+}
+
 input[type="text"]:disabled {
+  border: 1px dashed #aaa;
+  background: #f7f7f7;
+  -webkit-box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
+}
+
+textarea[disabled="disabled"]:disabled,
+textarea[type="text"]:disabled {
   border: 1px dashed #aaa;
   background: #f7f7f7;
   -webkit-box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);

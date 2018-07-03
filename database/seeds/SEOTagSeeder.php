@@ -22,7 +22,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:locale',
             'content_name' => "content",
             'content_value' => 'pt_BR',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 2,
@@ -34,7 +35,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:title',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security | Segurança e Serviços',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 3,
@@ -46,7 +48,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:site_name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 4,
@@ -58,7 +61,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:type',
             'content_name' => "content",
             'content_value' => 'website',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 5,
@@ -70,7 +74,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 6,
@@ -82,7 +87,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'fb:app_id',
             'content_name' => "content",
             'content_value' => '132834930721981',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 7,
@@ -94,7 +100,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:url',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 8,
@@ -106,7 +113,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 25
+            'priority' => 25,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 9,
@@ -118,7 +126,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:type',
             'content_name' => "content",
             'content_value' => 'image/jpeg',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 10,
@@ -130,7 +139,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:width',
             'content_name' => "content",
             'content_value' => '292',
-            'priority' => 15
+            'priority' => 15,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 11,
@@ -142,7 +152,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:height',
             'content_name' => "content",
             'content_value' => '560',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         // Linkedin Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -155,7 +166,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:card',
             'content_name' => "content",
             'content_value' => 'summary',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 13,
@@ -167,7 +179,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:creator',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 14,
@@ -179,7 +192,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:site',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 15,
@@ -191,7 +205,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:domain',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 16,
@@ -203,7 +218,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:title',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 17,
@@ -215,7 +231,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 18,
@@ -227,7 +244,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         // Google Plus Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -240,7 +258,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 20,
@@ -252,7 +271,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 21,
@@ -264,7 +284,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
 
         // Serviços Meta Tags
@@ -279,7 +300,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:locale',
             'content_name' => "content",
             'content_value' => 'pt_BR',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 23,
@@ -291,7 +313,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:title',
             'content_name' => "content",
             'content_value' => 'Serviços | Grupo Pro Security',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 24,
@@ -303,7 +326,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:site_name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 25,
@@ -315,7 +339,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:type',
             'content_name' => "content",
             'content_value' => 'website',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 26,
@@ -327,7 +352,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:description',
             'content_name' => "content",
             'content_value' => 'O Grupo Pro Security tem uma grande variedades de serviços para sua casa, condomínio e/ou empresa.',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 27,
@@ -339,7 +365,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'fb:app_id',
             'content_name' => "content",
             'content_value' => '132834930721981',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 28,
@@ -351,7 +378,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:url',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/servicos',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 29,
@@ -363,7 +391,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 25
+            'priority' => 25,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 30,
@@ -375,7 +404,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:type',
             'content_name' => "content",
             'content_value' => 'image/jpeg',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 31,
@@ -387,7 +417,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:width',
             'content_name' => "content",
             'content_value' => '292',
-            'priority' => 15
+            'priority' => 15,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 32,
@@ -399,7 +430,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:height',
             'content_name' => "content",
             'content_value' => '560',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         // Linkedin Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -412,7 +444,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:card',
             'content_name' => "content",
             'content_value' => 'summary',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 34,
@@ -424,7 +457,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:creator',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 35,
@@ -436,7 +470,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:site',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 36,
@@ -448,7 +483,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:domain',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/servicos.html',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 37,
@@ -460,7 +496,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:title',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security - Serviços',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 38,
@@ -472,7 +509,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:description',
             'content_name' => "content",
             'content_value' => 'O Grupo Pro Security tem uma grande variedades de serviços para sua casa, condomínio e/ou empresa.',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 39,
@@ -484,7 +522,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         // Google Plus Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -497,7 +536,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 41,
@@ -509,7 +549,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'description',
             'content_name' => "content",
             'content_value' => 'O Grupo Pro Security tem uma grande variedades de serviços para sua casa, condomínio e/ou empresa.',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 42,
@@ -521,7 +562,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
 
         // Vigilância Pessoal e Escolta Meta Tags
@@ -536,7 +578,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:locale',
             'content_name' => "content",
             'content_value' => 'pt_BR',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 44,
@@ -548,7 +591,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:title',
             'content_name' => "content",
             'content_value' => 'Vigilância Pessoal e Escolta - Grupo Pro Security',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 45,
@@ -560,7 +604,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:site_name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 46,
@@ -572,7 +617,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:type',
             'content_name' => "content",
             'content_value' => 'website',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 47,
@@ -584,7 +630,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 48,
@@ -596,7 +643,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'fb:app_id',
             'content_name' => "content",
             'content_value' => '132834930721981',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 49,
@@ -608,7 +656,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:url',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/vig-pessoal-escolta.html',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 50,
@@ -620,7 +669,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 25
+            'priority' => 25,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 51,
@@ -632,7 +682,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:type',
             'content_name' => "content",
             'content_value' => 'image/jpeg',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 54,
@@ -644,7 +695,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:width',
             'content_name' => "content",
             'content_value' => '292',
-            'priority' => 15
+            'priority' => 15,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 55,
@@ -656,7 +708,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:height',
             'content_name' => "content",
             'content_value' => '560',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         // Linkedin Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -669,7 +722,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:card',
             'content_name' => "content",
             'content_value' => 'summary',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 57,
@@ -681,7 +735,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:creator',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 58,
@@ -693,7 +748,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:site',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 59,
@@ -705,7 +761,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:domain',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/vig-pessoal-escolta.html',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 60,
@@ -717,7 +774,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:title',
             'content_name' => "content",
             'content_value' => 'Vigilância Pessoal e Escolta - Grupo Pro Security',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 61,
@@ -729,7 +787,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 62,
@@ -741,7 +800,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         // Google Plus Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -754,7 +814,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 64,
@@ -766,7 +827,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 65,
@@ -778,7 +840,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
 
         // Home Meta Tags
@@ -793,7 +856,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:locale',
             'content_name' => "content",
             'content_value' => 'pt_BR',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 67,
@@ -805,7 +869,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:title',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security | Segurança e Serviços',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 68,
@@ -817,7 +882,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:site_name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 69,
@@ -829,7 +895,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:type',
             'content_name' => "content",
             'content_value' => 'website',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 70,
@@ -841,7 +908,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 71,
@@ -853,7 +921,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'fb:app_id',
             'content_name' => "content",
             'content_value' => '132834930721981',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 72,
@@ -865,7 +934,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:url',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 73,
@@ -877,7 +947,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 25
+            'priority' => 25,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 74,
@@ -889,7 +960,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:type',
             'content_name' => "content",
             'content_value' => 'image/jpeg',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 75,
@@ -901,7 +973,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:width',
             'content_name' => "content",
             'content_value' => '292',
-            'priority' => 15
+            'priority' => 15,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 76,
@@ -913,7 +986,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'og:image:height',
             'content_name' => "content",
             'content_value' => '560',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         // Linkedin Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -926,7 +1000,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:card',
             'content_name' => "content",
             'content_value' => 'summary',
-            'priority' => 60
+            'priority' => 60,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 78,
@@ -938,7 +1013,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:creator',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 55
+            'priority' => 55,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 79,
@@ -950,7 +1026,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:site',
             'content_name' => "content",
             'content_value' => '@prosecurityplus',
-            'priority' => 50
+            'priority' => 50,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 80,
@@ -962,7 +1039,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:domain',
             'content_name' => "content",
             'content_value' => 'http://prosecurity.com.br/',
-            'priority' => 45
+            'priority' => 45,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 81,
@@ -974,7 +1052,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:title',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 40
+            'priority' => 40,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 82,
@@ -986,7 +1065,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 35
+            'priority' => 35,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 83,
@@ -998,7 +1078,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'twitter:image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 30
+            'priority' => 30,
+            'order' => 1,
         ]);
         // Google Plus Metatags - Defaults
         DB::table('s_e_o_tags')->insert([
@@ -1011,7 +1092,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'name',
             'content_name' => "content",
             'content_value' => 'Grupo Pro Security',
-            'priority' => 20
+            'priority' => 20,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 85,
@@ -1023,7 +1105,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'description',
             'content_name' => "content",
             'content_value' => 'Com mais de 30 anos de experiência o Grupo Pro Security é a solução ideal para sua empresa ou condomínio.',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
         DB::table('s_e_o_tags')->insert([
             'id' => 86,
@@ -1035,7 +1118,8 @@ class SEOTagSeeder extends Seeder {
             'property_value' => 'image',
             'content_name' => "content",
             'content_value' => 'http://www.prosecurity.com.br/imgs/share.jpg',
-            'priority' => 10
+            'priority' => 10,
+            'order' => 1,
         ]);
     }
 

@@ -9,8 +9,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading"><h1><strong>Vigilância Patrimonial</strong> - {{$page->slug}}</h1></div>
-				<text-input-component field-value="{{$page->title}}"></text-input-component>
-				<text-area-input-component field-value="{{$page->description}}"></text-area-input-component>
+				<text-input-component field-value="{{$page->title}}" placeholder-text="Digite aqui o título da página ..." name="pageTitle" label="Título"></text-input-component>
+				<text-area-input-component field-value="{{$page->description}}" placeholder-text="Digite aqui a descrição da página ..." name="pageDescription" label="Descrição"></text-area-input-component>
 				<b-collapse :open.sync="isOpen">
 					<div class="panel-heading" slot="trigger">
 							Tags de SEO
@@ -27,69 +27,37 @@
 								</div>
 							@endif	
 						@endforeach
-						</div>
 					</div>
 				</b-collapse>
+				<hr />
 				<b-collapse :open.sync="bannerIsOpen">
 					<div class="panel-heading" slot="trigger">
 						<strong>Banner</strong>
 						<i v-if="bannerIsOpen" id="bannerDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
 	                	<i v-else id="bannerDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 					</div>
+					<div class="columns m-r-5 m-l-5 m-t-5">
+						<div class="column is-manager-card box-component m-r-5 m-l-5">
+							<image-component :banners="{{@json_encode($banners['elements'])}}" :image-dir="{{@json_encode(asset('') . '/')}}"></image-component>
+						</div>	
+					</div>	
        		    </b-collapse>
        			<hr />
-       		    <b-collapse :open.sync="boxIsOpen">
+       			<b-collapse :open.sync="boxIsOpen">
 	         	    <div class="panel-heading" slot="trigger">
-	         	    	<strong>Boxes</strong>
-	         	    	<i v-if="boxIsOpen" id="boxesDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
-		                <i v-else id="boxesDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
+	         	    	<strong>Box de Texto</strong>
+	         	    	<i v-if="boxIsOpen" id="boxesDropdownIcon" label="Título" name="pagaTitle" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
+		                <i v-else id="boxesDropdownIcon" label="Descição" name="pagaDescription" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 	         	    </div>
-	        	 	<div class="columns panel-content p-l-20 p-t-20">
-				    </div>
-		            <div class="panel-content">
-	       		 	</div>
-	       		</b-collapse>	
-	            <hr />
-	        	<b-collapse :open.sync="destaqueIsOpen">
-				    <div class="panel-heading" slot="trigger">
-						<strong>Destaque</strong>
-						<i v-if="destaqueIsOpen" id="destaqueDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
-		                <i v-else id="destaqueDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
-		            </div>    
-		    	 	<div class="columns panel-content p-l-20 p-t-20 m-b-20">
-				    </div>
-			    </b-collapse>
-				<hr />
-				<b-collapse :open.sync="noticiasIsOpen">
-				<div class="panel-heading" slot="trigger">
-					<strong>Notícias</strong>
-					<i v-if="noticiasIsOpen" id="noticiasDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
-	                <i v-else id="noticiasDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
-				</div>
-	    	 		<div class="columns panel-content p-l-20 p-t-20">
-	        	 	</div>
-				</b-collapse>
-				<hr />
-				<b-collapse :open.sync="leadsIsOpen">
-					<div class="panel-heading" slot="trigger">
-						<strong>Leads</strong>
-						<i v-if="leadsIsOpen" id="leadsDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
-	                	<i v-else id="leadsDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
-					</div>
-	        	 	<div class="columns panel-content p-l-20 p-t-20">
-					</div>   
-				</b-collapse>
-				<hr />
-				<b-collapse :open.sync="videosIsOpen">
-					<div class="panel-heading" slot="trigger">
-						<strong>Videos</strong>
-						<i v-if="videosIsOpen" id="videosDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
-		            	<i v-else id="videosDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
-					</div>
-					<div class="columns panel-content p-l-20 p-t-20">
-					</div>
-				</b-collapse>
-				<hr style="margin-bottom: 50px;"/>
+	         	    @foreach($boxes['elements'] as $box)
+	         	    	<div class="columns panel-content p-l-20 p-t-20">
+							<div class="column is-manager-card box-component m-r-5 m-l-5">
+			            		<text-box-component name="textBox" :texts="{{@json_encode($box)}}" :order="{{@json_encode($loop->iteration)}}"></text-box-component>
+							</div>	
+						</div>
+	       		 	@endforeach
+	       		</b-collapse>
+				<hr style="margin-bottom: 50px;"/>	
 			</div>
 		</div>
 	</div>
@@ -103,10 +71,7 @@ var componentes = new Vue({
 		isOpen: false,
 		bannerIsOpen: true,
 		boxIsOpen: true,
-		destaqueIsOpen: true,
-		noticiasIsOpen: true,
-		leadsIsOpen: true,
-		videosIsOpen: true,
+		LinksIsOpen: true,
 	}
 });
 </script>

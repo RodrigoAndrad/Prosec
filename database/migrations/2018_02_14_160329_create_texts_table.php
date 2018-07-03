@@ -20,6 +20,8 @@ class CreateTextsTable extends Migration
             $table->text('title')->nullable(TRUE)->default(NULL);
             $table->text('subtitle')->nullable(TRUE)->default(NULL);
             $table->text('content')->nullable(TRUE)->default(NULL);
+            $table->decimal('priority',10,0);
+            $table->decimal('order',10,0);
             $table->timestamps();
         });
     }

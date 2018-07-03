@@ -48,7 +48,7 @@ $agora = Carbon\Carbon::now();
                                 <a href="resp-social.html"><li>Responsabilidade Social</li></a>
                                 <a href="pro-acao.html"><li>Pro Ação Criança</li></a>
                                 @if($campanha)
-                                <a href="pro-acao.html" style="background-color: red;"><li>Pro Ação Criança {{$agora->year}}</li></a>
+                                <a href="pro-acao-campanha.html" style="background-color: red;"><li>Pro Ação Criança {{$agora->year}}</li></a>
                                 @endif
                                 <a href="clientes.html"><li>Nossos Clientes</li></a>
                                 <a href="rh.html"><li>Política de RH</li></a>

@@ -21,10 +21,10 @@ return [
             'profile' => 'r,u'
         ],
         'cliente' => [
-            'profile' => 'c,r,u,d'
+            'profile' => 'r,u'
         ],
         'visitante' => [
-            'profile' => 'r'
+            'profile' => 'r,u'
         ],
 
     ],
