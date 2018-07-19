@@ -10,7 +10,7 @@
         </div>
         <div>
             <h1 class="has-text-centered has-text-info">{{leadsData.texts[0].content}}</h1>
-            <h3 class="has-text-centered">{{this.leadsData.texts[0].title}}</h3>
+            <h3 class="has-text-centered" v-html="this.leadsData.texts[0].title"></h3>
         </div>
         <div class="columns p-t-5" :id='"leadsCtrl" + order' style="display: none;">
             <div class="column is-4">

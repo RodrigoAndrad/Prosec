@@ -690,5 +690,4 @@ class ManageController extends Controller
         }
         else return FALSE;
     }
-
 }

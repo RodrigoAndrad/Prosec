@@ -56,14 +56,6 @@
 				   </div>
 				   @endif
 		           @endforeach
-		            <div class="panel-content">
-		           		<div class="column">
-		           			<a href="http://localhost/dev/prosecurity/website/public/index.php/manage/slide/create" class="button is-primary is-pulled-right m-r-10">
-							Criar Novo Box<span class="m-l-10"><i class="fa fa-th-large m-r-10"></i> </span></a>
-						</div>
-						<div class="column">
-						</div>
-	       		 	</div>
 	       		</b-collapse>	
 	            <hr />
 	        	<b-collapse :open.sync="destaqueIsOpen">

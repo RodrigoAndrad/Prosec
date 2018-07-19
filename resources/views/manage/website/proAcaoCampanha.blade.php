@@ -8,7 +8,16 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1><strong>Pro Ação Campanha</strong> - {{$page->slug}}</h1></div>
+                <div class="panel-heading">
+                	<div class="columns">
+                		<div class="column">
+                			<h1><strong>Pro Ação Campanha</strong> - {{$page->slug}}</h1>
+                		</div>
+                		<div class="column is-right-pulled">
+                			<page-switch-component @if($pageStatus) link-value="Campanha Ativa" @else link-value="Campanha Inativa" @endif></page-switch-component>
+                		</div>
+                	</div>
+				</div>
 				<text-input-component field-value="{{$page->title}}" placeholder-text="Digite aqui o título da página ..." name="pageTitle" label="Título"></text-input-component>
 				<text-area-input-component field-value="{{$page->description}}" placeholder-text="Digite aqui a descrição da página ..." name="pageDescription" label="Descrição"></text-area-input-component>
 				<b-collapse :open.sync="isOpen">

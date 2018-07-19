@@ -41,4 +41,6 @@ Vue.component('multi-link-box-component', require('./components/manage/MultiLink
 
 Vue.component('dialog-form-component', require('./components/manage/DialogFormComponent.vue'));
 
+Vue.component('page-switch-component', require('./components/manage/PageSwitchComponent.vue'));
+
 require ('./manage')

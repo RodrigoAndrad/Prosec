@@ -1599,6 +1599,8 @@ Vue.component('multi-link-box-component', __webpack_require__(102));
 
 Vue.component('dialog-form-component', __webpack_require__(105));
 
+Vue.component('page-switch-component', __webpack_require__(120));
+
 __webpack_require__(108);
 
 /***/ }),
@@ -45152,9 +45154,10 @@ var render = function() {
           _vm._v(_vm._s(_vm.leadsData.texts[0].content))
         ]),
         _vm._v(" "),
-        _c("h3", { staticClass: "has-text-centered" }, [
-          _vm._v(_vm._s(this.leadsData.texts[0].title))
-        ])
+        _c("h3", {
+          staticClass: "has-text-centered",
+          domProps: { innerHTML: _vm._s(this.leadsData.texts[0].title) }
+        })
       ]),
       _vm._v(" "),
       _c(
@@ -48261,6 +48264,136 @@ window.onload = function () {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(121)
+/* template */
+var __vue_template__ = __webpack_require__(122)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\manage\\PageSwitchComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-055f379a", Component.options)
+  } else {
+    hotAPI.reload("data-v-055f379a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 121 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['linkValue'],
+    mounted: function mounted() {
+        // console.log('Component mounted.')
+    },
+
+    methods: {},
+    data: function data() {
+        return {
+            displayValue: this.linkValue
+        };
+    }
+});
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "field" },
+    [
+      _c(
+        "b-switch",
+        {
+          attrs: {
+            value: _vm.linkValue,
+            "true-value": "Campanha Ativa",
+            "false-value": "Campanha Inativa"
+          },
+          model: {
+            value: _vm.displayValue,
+            callback: function($$v) {
+              _vm.displayValue = $$v
+            },
+            expression: "displayValue"
+          }
+        },
+        [_vm._v("\n        " + _vm._s(_vm.displayValue) + "\n    ")]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-055f379a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

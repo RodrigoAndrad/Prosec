@@ -57,8 +57,9 @@
 						</div>
 	       		 	@endforeach
 	       		</b-collapse>
+	       		<!--
 	       		<hr />
-				<b-collapse :open.sync="boxIsOpen">
+	       		<b-collapse :open.sync="boxIsOpen">
 	         	    <div class="panel-heading" slot="trigger">
 	         	    	<strong>Links</strong>
 	         	    	<i v-if="LinksIsOpen" id="boxesDropdownIcon" label="Título" name="pagaTitle" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
@@ -72,6 +73,7 @@
 						</div>
 	       		 	@endforeach
 	       		</b-collapse>
+	       		-->
 				<hr style="margin-bottom: 50px;"/>	
 			</div>
 		</div>
