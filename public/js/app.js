@@ -1544,7 +1544,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(94);
+module.exports = __webpack_require__(109);
 
 
 /***/ }),
@@ -1591,13 +1591,15 @@ Vue.component('text-box-component', __webpack_require__(81));
 Vue.component('link-box-component', __webpack_require__(84));
 Vue.component('resp-social-box-component', __webpack_require__(87));
 Vue.component('clientes-box-component', __webpack_require__(90));
-Vue.component('pro-acao-leads-component', __webpack_require__(105));
-Vue.component('multi-image-component', __webpack_require__(108));
-Vue.component('image-and-thumbs-component', __webpack_require__(111));
+Vue.component('pro-acao-leads-component', __webpack_require__(93));
+Vue.component('multi-image-component', __webpack_require__(96));
+Vue.component('image-and-thumbs-component', __webpack_require__(99));
 
-Vue.component('multi-link-box-component', __webpack_require__(114));
+Vue.component('multi-link-box-component', __webpack_require__(102));
 
-__webpack_require__(93);
+Vue.component('dialog-form-component', __webpack_require__(105));
+
+__webpack_require__(108);
 
 /***/ }),
 /* 14 */
@@ -44157,7 +44159,7 @@ var render = function() {
       _c(
         "draggable",
         {
-          staticClass: "columns m-r-5 m-l-5 m-t-5",
+          staticClass: "columns is-multiline m-r-5 m-l-5 m-t-5",
           attrs: { list: _vm.slidesData },
           on: {
             start: function($event) {
@@ -45871,6 +45873,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('#BoxControls' + this.texts.texts[0].id).hide();
         },
         edit: function edit(event, key) {
+
             $('#' + this.name + 'Title').prop("disabled", false);
             $('#' + this.name + 'Content').prop("disabled", false);
             $('#' + this.name + 'CancelBttn').attr('disabled', false);
@@ -45891,15 +45894,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            text: this.texts,
+            text: this.texts
+            /*
             config: {
-                toolbar: [['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'], ['NumberedList', 'BulletedList'], ['Headers'], ['Styles', 'Format', 'Font', 'FontSize'], ['TextColor', 'BGColor']],
+                toolbar: [
+                    [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],
+                    [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript' ],
+                    ['NumberedList','BulletedList'],
+                    [ 'Headers'],
+                    [ 'Styles', 'Format', 'Font', 'FontSize' ],
+                    [ 'TextColor', 'BGColor' ]
+                    
+                ],
                 height: '100%',
-                width: '100%'
+                width: '100%',
             }
+            */
         };
     },
     mounted: function mounted() {
+        cardModal();
         /*
             CKEDITOR.on('instanceReady', (event) => {
             // Change the read-only state of the editor.
@@ -45931,193 +45945,202 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "content" }, [
-        _c("div", { staticClass: "columns" }, [
-          _c("div", { staticClass: "column is-6" }, [
-            _c("div", { attrs: { name: "order" } }, [
-              _vm._v(_vm._s(this.order) + "º")
-            ])
+      _c(
+        "div",
+        { staticClass: "content" },
+        [
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column is-6" }, [
+              _c("div", { attrs: { name: "order" } }, [
+                _vm._v(_vm._s(this.order) + "º")
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "column", attrs: { id: "switch" } },
+              [
+                _c("slide-switch-component", {
+                  attrs: {
+                    linkValue:
+                      Array.isArray(this.texts.links) && this.texts.links.length
+                        ? "Link Ativo"
+                        : "Link Inativo"
+                  }
+                })
+              ],
+              1
+            )
           ]),
+          _vm._v(" "),
+          this.text.texts[0].title
+            ? _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column is-12" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Título:" } },
+                      [
+                        _c(
+                          "b-tooltip",
+                          {
+                            staticStyle: { "min-width": "100%" },
+                            attrs: {
+                              label: "Clique em Editar para Editar o Conteúdo"
+                            }
+                          },
+                          [
+                            _c("b-input", {
+                              staticStyle: { "min-width": "100%" },
+                              attrs: {
+                                placeholder: "this.placeholderText",
+                                value: this.text.texts[0].title,
+                                id: "TextTitle" + this.text.id,
+                                disabled: ""
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.text.texts[0].subtitle
+            ? _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column is-12" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Subtítulo:" } },
+                      [
+                        _c(
+                          "b-tooltip",
+                          {
+                            staticStyle: { "min-width": "100%" },
+                            attrs: {
+                              label: "Clique em Editar para Editar o Conteúdo"
+                            }
+                          },
+                          [
+                            _c("div", {
+                              staticClass: "fake-textarea",
+                              domProps: {
+                                innerHTML: _vm._s(this.text.texts[0].subtitle)
+                              }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.text.texts[0].content
+            ? _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column is-12" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Texto:" } },
+                      [
+                        _c(
+                          "b-tooltip",
+                          {
+                            staticStyle: { "min-width": "100%" },
+                            attrs: {
+                              label: "Clique em Editar para Editar o Conteúdo"
+                            }
+                          },
+                          [
+                            _c("div", {
+                              staticClass: "fake-textarea",
+                              domProps: {
+                                innerHTML: _vm._s(this.text.texts[0].content)
+                              }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "column", attrs: { id: "switch" } },
+            {
+              staticClass: "columns p-t-5",
+              staticStyle: { display: "none" },
+              attrs: { id: "BoxControls" + this.texts.texts[0].id }
+            },
             [
-              _c("slide-switch-component", {
-                attrs: {
-                  linkValue:
-                    Array.isArray(this.texts.links) && this.texts.links.length
-                      ? "Link Ativo"
-                      : "Link Inativo"
-                }
-              })
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        this.text.texts[0].title
-          ? _c("div", { staticClass: "columns" }, [
-              _c(
-                "div",
-                { staticClass: "column is-12" },
-                [
-                  _c(
-                    "b-field",
-                    { attrs: { label: "Título:" } },
-                    [
-                      _c(
-                        "b-tooltip",
-                        {
-                          staticStyle: { "min-width": "100%" },
-                          attrs: {
-                            label: "Clique em Editar para Editar o Conteúdo"
-                          }
-                        },
-                        [
-                          _c("b-input", {
-                            staticStyle: { "min-width": "100%" },
-                            attrs: {
-                              placeholder: "this.placeholderText",
-                              value: this.text.texts[0].title,
-                              id: "TextTitle" + this.text.id,
-                              disabled: ""
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        this.text.texts[0].subtitle
-          ? _c("div", { staticClass: "columns" }, [
-              _c(
-                "div",
-                { staticClass: "column is-12" },
-                [
-                  _c(
-                    "b-field",
-                    { attrs: { label: "Subtítulo:" } },
-                    [
-                      _c(
-                        "b-tooltip",
-                        {
-                          staticStyle: { "min-width": "100%" },
-                          attrs: {
-                            label: "Clique em Editar para Editar o Conteúdo"
-                          }
-                        },
-                        [
-                          _c("div", {
-                            staticClass: "fake-textarea",
-                            domProps: {
-                              innerHTML: _vm._s(this.text.texts[0].subtitle)
-                            }
-                          })
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        this.text.texts[0].content
-          ? _c("div", { staticClass: "columns" }, [
-              _c(
-                "div",
-                { staticClass: "column is-12" },
-                [
-                  _c(
-                    "b-field",
-                    { attrs: { label: "Texto:" } },
-                    [
-                      _c(
-                        "b-tooltip",
-                        {
-                          staticStyle: { "min-width": "100%" },
-                          attrs: {
-                            label: "Clique em Editar para Editar o Conteúdo"
-                          }
-                        },
-                        [
-                          _c("div", {
-                            staticClass: "fake-textarea",
-                            domProps: {
-                              innerHTML: _vm._s(this.text.texts[0].content)
-                            }
-                          })
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "columns p-t-5",
-            staticStyle: { display: "none" },
-            attrs: { id: "BoxControls" + this.texts.texts[0].id }
-          },
-          [
-            _c("div", { staticClass: "column is-4" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "button is-link is-small is-block",
-                  attrs: { id: this.name + this.texts.texts[0].id + "Edit" },
-                  on: {
-                    onclick: function($event) {
-                      _vm.edit($event, this.texts.texts[0].id)
+              _c("div", { staticClass: "column is-4" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-link is-small is-block",
+                    attrs: { id: this.name + this.texts.texts[0].id + "Edit" },
+                    on: {
+                      onclick: function($event) {
+                        _vm.edit($event)
+                      }
                     }
-                  }
-                },
-                [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "column is-4" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "column is-4" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "button is-danger is-small is-block",
-                  attrs: { id: this.name + this.texts.texts[0].id + "Cancel" },
-                  on: {
-                    onclick: function($event) {
-                      _vm.cancel($event, this.texts.texts[0].id)
+                  },
+                  [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column is-4" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "column is-4" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-danger is-small is-block",
+                    attrs: {
+                      id: this.name + this.texts.texts[0].id + "Cancel"
+                    },
+                    on: {
+                      onclick: function($event) {
+                        _vm.cancel($event)
+                      }
                     }
-                  }
-                },
-                [
-                  _c("span", { staticClass: "p-l-10 p-r-10" }, [
-                    _vm._v("Apagar")
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ]
-              )
-            ])
-          ]
-        )
-      ])
+                  },
+                  [
+                    _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                      _vm._v("Apagar")
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("dialog-form-component")
+        ],
+        1
+      )
     ]
   )
 }
@@ -47005,70 +47028,14 @@ if (false) {
 
 /***/ }),
 /* 93 */
-/***/ (function(module, exports) {
-
-var accordions = document.getElementsByClassName('has-submenu');
-
-function setSubmenuStyles(submenu, maxHeight, margins) {
-  submenu.style.maxHeight = maxHeight;
-  submenu.style.marginTop = margins;
-  submenu.style.marginBottom = margins;
-}
-
-for (var i = 0; i < accordions.length; i++) {
-  if (accordions[i].classList.contains('is-active')) {
-    var submenu = accordions[i].nextElementSibling;
-    setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
-  }
-
-  accordions[i].onclick = function () {
-    this.classList.toggle('is-active');
-
-    var submenu = this.nextElementSibling;
-    if (submenu.style.maxHeight) {
-      // menu is open, we need to close it now
-      setSubmenuStyles(submenu, null, null);
-    } else {
-      // meny is close, so we need to open it
-      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
-    }
-  };
-}
-
-window.onload = function () {
-  var adminSlideButton = document.getElementById('admin-slideout-button');
-  adminSlideButton.onclick = function () {
-    this.classList.toggle('is-active');
-    document.getElementById('admin-side-menu').classList.toggle('is-active');
-  };
-};
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(106)
+var __vue_script__ = __webpack_require__(94)
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = __webpack_require__(95)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47107,7 +47074,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 106 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47175,7 +47142,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 }, 'mounted', function mounted() {}));
 
 /***/ }),
-/* 107 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47312,15 +47279,15 @@ if (false) {
 }
 
 /***/ }),
-/* 108 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(109)
+var __vue_script__ = __webpack_require__(97)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(98)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47359,7 +47326,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 109 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47419,7 +47386,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 110 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47552,15 +47519,15 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(112)
+var __vue_script__ = __webpack_require__(100)
 /* template */
-var __vue_template__ = __webpack_require__(113)
+var __vue_template__ = __webpack_require__(101)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47599,7 +47566,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 112 */
+/* 100 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47660,7 +47627,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 113 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47801,15 +47768,15 @@ if (false) {
 }
 
 /***/ }),
-/* 114 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(115)
+var __vue_script__ = __webpack_require__(103)
 /* template */
-var __vue_template__ = __webpack_require__(116)
+var __vue_template__ = __webpack_require__(104)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47848,7 +47815,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 115 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47959,7 +47926,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 116 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48148,6 +48115,152 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-5442b265", module.exports)
   }
 }
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(106)
+/* template */
+var __vue_template__ = __webpack_require__(107)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\manage\\DialogFormComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3cb302b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-3cb302b1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 106 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+
+var ModalForm = {
+    props: ['email', 'password'],
+    template: '\n        <form action="">\n            <div class="modal-card" style="width: auto">\n                <header class="modal-card-head">\n                    <p class="modal-card-title">Login</p>\n                </header>\n                <section class="modal-card-body">\n                    <b-field label="Email">\n                        <b-input\n                            type="email"\n                            :value="email"\n                            placeholder="Your email"\n                            required>\n                        </b-input>\n                    </b-field>\n\n                    <b-field label="Password">\n                        <b-input\n                            type="password"\n                            :value="password"\n                            password-reveal\n                            placeholder="Your password"\n                            required>\n                        </b-input>\n                    </b-field>\n\n                    <b-checkbox>Remember me</b-checkbox>\n                </section>\n                <footer class="modal-card-foot">\n                    <button class="button" type="button" @click="$parent.close()">Close</button>\n                    <button class="button is-primary">Login</button>\n                </footer>\n            </div>\n        </form>\n    '
+
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        cardModal: function cardModal() {
+            this.$modal.open({
+                parent: this,
+                canCancel: false,
+                component: ModalForm,
+                hasModalCard: true
+            });
+        }
+    },
+    mounted: function mounted() {
+        console.log('Modal Form ok');
+        // this.cardModal();
+    }
+});
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3cb302b1", module.exports)
+  }
+}
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports) {
+
+var accordions = document.getElementsByClassName('has-submenu');
+
+function setSubmenuStyles(submenu, maxHeight, margins) {
+  submenu.style.maxHeight = maxHeight;
+  submenu.style.marginTop = margins;
+  submenu.style.marginBottom = margins;
+}
+
+for (var i = 0; i < accordions.length; i++) {
+  if (accordions[i].classList.contains('is-active')) {
+    var submenu = accordions[i].nextElementSibling;
+    setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
+  }
+
+  accordions[i].onclick = function () {
+    this.classList.toggle('is-active');
+
+    var submenu = this.nextElementSibling;
+    if (submenu.style.maxHeight) {
+      // menu is open, we need to close it now
+      setSubmenuStyles(submenu, null, null);
+    } else {
+      // meny is close, so we need to open it
+      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
+    }
+  };
+}
+
+window.onload = function () {
+  var adminSlideButton = document.getElementById('admin-slideout-button');
+  adminSlideButton.onclick = function () {
+    this.classList.toggle('is-active');
+    document.getElementById('admin-side-menu').classList.toggle('is-active');
+  };
+};
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

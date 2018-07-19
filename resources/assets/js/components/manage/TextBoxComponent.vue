@@ -38,7 +38,7 @@
         </div>
         <div class="columns p-t-5" :id='"BoxControls" + this.texts.texts[0].id' style="display: none;">
             <div class="column is-4">
-                <a class="button is-link is-small is-block" @onclick="edit($event, this.texts.texts[0].id)" :id='this.name + this.texts.texts[0].id + "Edit"'>
+                <a class="button is-link is-small is-block" @onclick="edit($event)" :id='this.name + this.texts.texts[0].id + "Edit"'>
                     <span>Editar</span>
                     <span class="icon is-small p-l-10 p-r-10">
                         <i class="fa fa-pencil-square-o" ></i>
@@ -48,7 +48,7 @@
             <div class="column is-4">
             </div>
             <div class="column is-4">
-                <a class="button is-danger is-small is-block" @onclick="cancel($event, this.texts.texts[0].id)" :id='this.name + this.texts.texts[0].id + "Cancel"'>
+                <a class="button is-danger is-small is-block" @onclick="cancel($event)" :id='this.name + this.texts.texts[0].id + "Cancel"'>
                     <span class="p-l-10 p-r-10">Apagar</span>
                     <span class="icon is-small">
                         <i class="fa fa-trash" ></i>
@@ -56,7 +56,7 @@
                 </a>
             </div>
         </div>
-
+        <dialog-form-component></dialog-form-component>
     </div>
     </div>
 </template>
@@ -76,6 +76,8 @@ export default {
             $('#BoxControls' + this.texts.texts[0].id).hide();
          },
          edit: function(event, key){
+            
+
             $('#' + this.name + 'Title').prop("disabled", false)
             $('#' + this.name + 'Content').prop("disabled", false)
             $('#' + this.name + 'CancelBttn').attr('disabled',false)
@@ -97,6 +99,7 @@ export default {
     data: function() {
         return {
             text: this.texts,
+            /*
             config: {
                 toolbar: [
                     [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],
@@ -110,9 +113,11 @@ export default {
                 height: '100%',
                 width: '100%',
             }
+            */
         }
     },
     mounted () {
+        cardModal();
     /*
         CKEDITOR.on('instanceReady', (event) => {
         // Change the read-only state of the editor.

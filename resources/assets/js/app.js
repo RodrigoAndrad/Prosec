@@ -39,4 +39,6 @@ Vue.component('image-and-thumbs-component', require('./components/manage/ImageAn
 
 Vue.component('multi-link-box-component', require('./components/manage/MultiLinkBoxComponent.vue'));
 
+Vue.component('dialog-form-component', require('./components/manage/DialogFormComponent.vue'));
+
 require ('./manage')

@@ -1,6 +1,6 @@
 <template>
     <div class="panel-content m-b-30">
-        <draggable :list="slidesData" @start="drag=true" @end="drag=false" class="columns m-r-5 m-l-5 m-t-5">
+        <draggable :list="slidesData" @start="drag=true" @end="drag=false" class="columns is-multiline m-r-5 m-l-5 m-t-5">
             <div v-for="(slide, key) in slidesData" class="column is-manager-card box-component m-r-5 m-l-5">
                 <slide-component :slideOrder="key" :linkValue=" slide.links[0] ? 'Link Ativo' : 'Link Inativo' " :image-dir="imageDir" :imageSrc="slide.images[0].src" :imageAlt="slide.images[0].alt"></slide-component>
             </div>
