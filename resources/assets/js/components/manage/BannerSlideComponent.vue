@@ -33,17 +33,9 @@ export default {
             slidesData: $.map(this.slides, function(value,index){
                 return[value]
             })
-            
-            // slidesData: this.slides
         }
     },
     mounted () {
-/*        this.slidesData =  $.map(this.slides, function(value,index){
-            return[value]
-        }); */
-        // console.log(this.slides.links[0] ? 'Link Ativo' : 'Link Inativo');
-        // console.log(this.slides.links[0].url);
-        // console.log(this.slidesData[0].links[0]);
     }
 }
 </script>

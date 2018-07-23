@@ -17308,6 +17308,10 @@ a.is-muted:hover {
   width: 100%;
 }
 
+.modal {
+  z-index: 2000000;
+}
+
 .m-t-0 {
   margin-top: 0px !important;
 }

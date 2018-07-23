@@ -1544,7 +1544,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(109);
+module.exports = __webpack_require__(112);
 
 
 /***/ }),
@@ -1599,9 +1599,9 @@ Vue.component('multi-link-box-component', __webpack_require__(102));
 
 Vue.component('dialog-form-component', __webpack_require__(105));
 
-Vue.component('page-switch-component', __webpack_require__(120));
+Vue.component('page-switch-component', __webpack_require__(108));
 
-__webpack_require__(108);
+__webpack_require__(111);
 
 /***/ }),
 /* 14 */
@@ -42582,18 +42582,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             slidesData: $.map(this.slides, function (value, index) {
                 return [value];
             })
-
-            // slidesData: this.slides
         };
     },
-    mounted: function mounted() {
-        /*        this.slidesData =  $.map(this.slides, function(value,index){
-                    return[value]
-                }); */
-        // console.log(this.slides.links[0] ? 'Link Ativo' : 'Link Inativo');
-        // console.log(this.slides.links[0].url);
-        // console.log(this.slidesData[0].links[0]);
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -48221,6 +48212,175 @@ if (false) {
 
 /***/ }),
 /* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(109)
+/* template */
+var __vue_template__ = __webpack_require__(110)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\manage\\PageSwitchComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-055f379a", Component.options)
+  } else {
+    hotAPI.reload("data-v-055f379a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 109 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['linkValue'],
+    mounted: function mounted() {},
+
+    methods: {
+        onInput: function onInput() {
+            switch (this.displayValue) {
+                case 'Campanha Ativa':
+                    var type = 'is-success';
+                    this.returnToast(type);
+                    break;
+                case 'Campanha Inativa':
+                    var type = 'is-danger';
+                    this.confirmCustomDelete(type);
+                    break;
+            }
+        },
+        confirmCustomDelete: function confirmCustomDelete(type) {
+            var _this = this;
+
+            this.$dialog.confirm({
+                title: 'Desabilitando a Campanha',
+                message: 'Você tem certeza de que quer <b>desabilitar</b> a página de campanha da Pro Ação? Enquanto estiver desabilitada a página não estará disponivel aos visitantes do site.',
+                cancelText: 'Cancelar',
+                confirmText: 'Desabilitar Campanha',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this.changeCampaingValue(type);_this.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this.confirmation) {
+                        _this.displayValue = 'Campanha Ativa';
+                    }_this.confirmation = null;
+                }
+            });
+        },
+        changeCampaingValue: function changeCampaingValue(type) {
+            this.returnToast(type);
+            /*
+            axios.get("http://api.icndb.com/jokes/random/10")
+                .then((response)  =>  { alert(response) })
+            */
+        },
+        returnToast: function returnToast(type) {
+            this.$toast.open({
+                message: '' + this.displayValue,
+                queue: false,
+                type: type,
+                position: 'is-bottom-right'
+                // container: '#app'
+            });
+        }
+    },
+    data: function data() {
+        return {
+            displayValue: this.linkValue,
+            confirmation: null
+        };
+    }
+});
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "field" },
+    [
+      _c(
+        "b-switch",
+        {
+          attrs: {
+            value: _vm.linkValue,
+            "true-value": "Campanha Ativa",
+            "false-value": "Campanha Inativa"
+          },
+          on: { input: _vm.onInput },
+          model: {
+            value: _vm.displayValue,
+            callback: function($$v) {
+              _vm.displayValue = $$v
+            },
+            expression: "displayValue"
+          }
+        },
+        [_vm._v("\n        " + _vm._s(_vm.displayValue) + "\n    ")]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-055f379a", module.exports)
+  }
+}
+
+/***/ }),
+/* 111 */
 /***/ (function(module, exports) {
 
 var accordions = document.getElementsByClassName('has-submenu');
@@ -48260,140 +48420,10 @@ window.onload = function () {
 };
 
 /***/ }),
-/* 109 */
+/* 112 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(121)
-/* template */
-var __vue_template__ = __webpack_require__(122)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\manage\\PageSwitchComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-055f379a", Component.options)
-  } else {
-    hotAPI.reload("data-v-055f379a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 121 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['linkValue'],
-    mounted: function mounted() {
-        // console.log('Component mounted.')
-    },
-
-    methods: {},
-    data: function data() {
-        return {
-            displayValue: this.linkValue
-        };
-    }
-});
-
-/***/ }),
-/* 122 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "field" },
-    [
-      _c(
-        "b-switch",
-        {
-          attrs: {
-            value: _vm.linkValue,
-            "true-value": "Campanha Ativa",
-            "false-value": "Campanha Inativa"
-          },
-          model: {
-            value: _vm.displayValue,
-            callback: function($$v) {
-              _vm.displayValue = $$v
-            },
-            expression: "displayValue"
-          }
-        },
-        [_vm._v("\n        " + _vm._s(_vm.displayValue) + "\n    ")]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-055f379a", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

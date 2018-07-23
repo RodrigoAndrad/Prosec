@@ -22,9 +22,9 @@
 				<text-area-input-component field-value="{{$page->description}}" placeholder-text="Digite aqui a descrição da página ..." name="pageDescription" label="Descrição"></text-area-input-component>
 				<b-collapse :open.sync="isOpen">
 					<div class="panel-heading" slot="trigger">
-							Tags de SEO
-	                    	<i v-if="isOpen" id="seoDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
-	                    	<i v-else id="seoDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
+						Tags de SEO
+	                	<i v-if="isOpen" id="seoDropdownIcon" class="fa fa-chevron-down is-pulled-right p-r-10"></i>
+	                	<i v-else id="seoDropdownIcon" class="fa fa-chevron-up is-pulled-right p-r-10"></i>
 					</div>
 					<div class="panel-body" >
 						@foreach($page->seoTags as $tag)

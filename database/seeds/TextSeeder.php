@@ -29,7 +29,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => 'Intelligent Service',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
 
         DB::table('texts')->insert([
@@ -40,7 +40,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => 'Vigilância Patrimonial',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
 
         DB::table('texts')->insert([
@@ -51,7 +51,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => 'Áreas de Atuação',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
 
         DB::table('texts')->insert([
@@ -62,7 +62,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => 'Fale Conosco',
             'priority' => 1,
-            'order' => 1,
+            'order' => 5,
         ]);
         DB::table('texts')->insert([
             'id' => 6,
@@ -72,7 +72,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => 'Solicite Uma Proposta',
             'priority' => 1,
-            'order' => 1,
+            'order' => 6,
         ]);
         DB::table('texts')->insert([
             'id' => 7,
@@ -92,7 +92,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => 'Contratar um serviço de monitoramento é importante para a grande maioria das empresas',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 9,
@@ -102,7 +102,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => 'Sem dúvidas, uma das maiores preocupações dos brasileiros hoje em dia é com a segurança',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
         DB::table('texts')->insert([
             'id' => 10,
@@ -122,7 +122,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '25%',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 12,
@@ -132,7 +132,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '5854',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
         DB::table('texts')->insert([
             'id' => 13,
@@ -142,7 +142,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '+30',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
         DB::table('texts')->insert([
             'id' => 14,
@@ -162,7 +162,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 16,
@@ -171,7 +171,7 @@ class TextSeeder extends Seeder {
             'title' => 'Portaria, Controlador de Acesso e Recepção',
             'subtitle' => NULL,
             'content' => NULL,
-            'priority' => 1,
+            'priority' => 3,
             'order' => 1,
         ]);
         DB::table('texts')->insert([
@@ -182,7 +182,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
         DB::table('texts')->insert([
             'id' => 18,
@@ -192,7 +192,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 5,
         ]);
         DB::table('texts')->insert([
             'id' => 19,
@@ -202,7 +202,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 6,
         ]);
         DB::table('texts')->insert([
             'id' => 20,
@@ -212,7 +212,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 7,
         ]);
         DB::table('texts')->insert([
             'id' => 21,
@@ -222,7 +222,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 8,
         ]);
         DB::table('texts')->insert([
             'id' => 22,
@@ -232,7 +232,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 9,
         ]);
 
         DB::table('texts')->insert([
@@ -309,7 +309,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>A procura por um sistema de proteção eficaz tornou-se uma opção bastante desejada, seja em residências ou pontos comerciais. Por isso, o Grupo Pro Security, preocupado em zelar por sua segurança, apresenta produtos e soluções eficazes. Entre os produtos disponibilizados, estão: central de alarmes, sensor de movimento, quebra de vidro, fumaça, impacto, botão de pânico, sensor para portas e janelas, painel de alarme, sirene e cerca elétrica. O Grupo Pro Security faz uso de sistemas de alta tecnologia com fácil instalação; capazes de proteger o imóvel e também, locais de grandes extensões.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 29,
@@ -320,7 +320,7 @@ class TextSeeder extends Seeder {
             'content' => '<p>A proteção perimetral abrange inúmeros sistemas de segurança. O Grupo Pro Security, a partir da análise de um consultor especializado, oferece a melhor solução para cada tipo de perímetro. Dessa forma, apresenta os mais diversos dispositivos, que de alguma forma, podem impedir e dificultar o acesso de pessoas ou animais em uma determinada área. Dentre os sistemas mais utilizados estão os sensores infravermelho sob muros, sensores infravermelhos terrestres e cerca elétricas com choque pulsativo.</p>
                                 <p>As cercas elétricas instaladas pelo Grupo Pro Security atendem às normas da Associação Brasileira de Normas Técnicas (ABNT). Outra forma de proteção utilizada são os arames de concertina. Trata-se de uma barreira de segurança laminada, de forma espiralada que possui lâminas pontiagudas, cortantes e penetrantes. A concertina foi originada nas cercas utilizadas em ações militares que ficavam no chão para impedir a ultrapassagem de um perímetro. A concertina é a evolução do arame farpado e geralmente são utilizadas em muros, alambrados, cercas, portões, telhados e torres, especialmente aqueles com grande vegetação que impede a instalação de um dispositivo eletrônico. São feitos de aço galvanizado ou inoxidável e dificilmente são cortados por ferramentas convencionais.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
         DB::table('texts')->insert([
             'id' => 30,
@@ -336,7 +336,7 @@ class TextSeeder extends Seeder {
                                   <li>Sistema de segurança em pleno funcionamento.</li>
                                 </ul>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
 
         DB::table('texts')->insert([
@@ -371,7 +371,7 @@ class TextSeeder extends Seeder {
                           <p>Com soluções inovadoras e uma equipe especializada para atender os clientes e executar as ações, o monitoramento é realizado com o objetivo de detectar e prevenir a presença de intrusos em áreas restritas. O monitoramento pode ser permanente ou mediante acionamento de dispositivo eletrônico. Quando um dispositivo, como por exemplo, um sensor de presença é acionado, imediatamente a Central passa a monitorar a câmera do estabelecimento com o objetivo de constatar algum sinistro em curso. Mediante qualquer constatação de problema, o procedimento padrão é colocado em prática. </p>
                           <p>De acordo com a necessidade do cliente, esse serviço pode atender tanto as áreas internas como as externas do imóvel.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 34,
@@ -381,7 +381,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O cliente pode acompanhar em tempo real, via internet, todas as câmeras de segurança instaladas em seu imóvel. A gravação remota de imagens consiste em armazená-las no sistema CFTV, fora do ambiente onde ele está instalado. Com a ajuda do Grupo Pro Security, o cliente é quem define onde e quais câmeras deverão transmitir as imagens para a Central de Monitoramento, que poderão ser gravadas automaticamente.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
         DB::table('texts')->insert([
             'id' => 35,
@@ -397,7 +397,7 @@ class TextSeeder extends Seeder {
                                   <li>Manutenções corretivas do sistema de alarme e câmeras existentes no condomínio.</li>
                                 </ul>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
         DB::table('texts')->insert([
             'id' => 36,
@@ -412,7 +412,7 @@ class TextSeeder extends Seeder {
                                   <li>Sempre que uma porta ou janela se abre ou em uma emergência, o botão de pânico é acionado e as imagens são transmitidas automaticamente para a Central de Monitoramento, que no mesmo instante, executa os procedimentos de proteção necessários, como acionar uma viatura. </li>
                                 </ul>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 5,
         ]);
 
 
@@ -444,7 +444,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O Pro Control estabelece um espaço exclusivo para a publicação de comunicados, atas, regulamentos, entre outros materiais de interesse. A troca de informações é realizada de forma mais rápida entre o zelador, síndico, administrador e morador. Os serviços realizados também podem ser apresentados e acompanhados pelo sistema, como pinturas, reformas e demais atividades. Todos os acontecimentos são transmitidos com mais facilidade e sem burocracia, como os assuntos referentes às reservas das áreas de lazer solicitadas pelos moradores.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 40,
@@ -454,7 +454,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>Com o Pro Control o morador consegue reservar as áreas de lazer do condomínio com menos burocracia e mais rapidez. A lista de convidados pode ser encaminhada à portaria com o intuito de agilizar as entradas e trazer mais segurança ao local. Com o Pro Control também é possível receber e encaminhar alertas via SMS sobre encomendas na recepção, entrada e saída de empregados, entre outros. O sistema também ajuda como uma fonte importante de consulta. Assim, você consegue localizar com mais credibilidade, um serviço que procura na região, juntamente com as opiniões de seus vizinhos.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
         DB::table('texts')->insert([
             'id' => 41,
@@ -467,7 +467,7 @@ class TextSeeder extends Seeder {
                             <p>Os produtos convencionais utilizam matérias-primas oriundas do petróleo, elemento poluente que degrada o meio ambiente. Os utilizados pela Pro Clean são produzidos com elementos orgânicos que requerem menor quantidade de água nos processos, se decompõem rapidamente no meio ambiente e não agridem os meios naturais.</p>
                             <p>Além disso, os produtos biodegradáveis também são mais saudáveis para os profissionais, uma vez que os agentes são menos corrosivos. Todos produtos receberam o certificado de limpeza verde.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
         DB::table('texts')->insert([
             'id' => 42,
@@ -497,7 +497,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O Grupo Pro Security apresenta profissionais preparados e bem treinados para atender as mais diversas necessidades que você, sua empresa ou que o seu condomínio necessita. Por isso, além de proporcionar serviços de proteção e limpeza, o Grupo Pro Security se preocupa com a conservação e o bom funcionamento das áreas comuns, como os jardins e as paisagens que cercam o seu ambiente. Com dedicação e profissionalismo, o seu espaço verde terá o cuidado que merece.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 45,
@@ -508,7 +508,7 @@ class TextSeeder extends Seeder {
             'content' => '<p>Para atender as necessidades de cada cliente no que se refere à manutenção predial e conservação de ambientes, o Grupo Pro Security conta com profissionais experientes na área de zeladoria e capacitados para atuar e coordenar ações na área elétrica, hidráulica, limpeza, entre outros.</p>
                                 <p>O zelador tem como principal objetivo fiscalizar as áreas de uso comum dos condôminos ou inquilinos, verificar o funcionamento das instalações elétricas e hidráulicas do edifício, assim como, os aparelhos de uso comum, além de zelar pelo sossego e pela observância da disciplina no edifício, de acordo com o seu regimento interno ou com as normas afixadas na portaria e nos corredores.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
         DB::table('texts')->insert([
             'id' => 46,
@@ -518,7 +518,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O bombeiro civil tem por função proteger pessoas e patrimônios de riscos como incêndios e vazamentos. Além disso, inspeciona e testa equipamentos de segurança. Este profissional está habilitado para realizar salvamentos e prestar primeiros socorros, podendo treinar equipes e brigadas em situações de emergência.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
         DB::table('texts')->insert([
             'id' => 47,
@@ -552,7 +552,7 @@ class TextSeeder extends Seeder {
                                 <p>A qualidade dos serviços, a presença, a interação constante da supervisão operacional junto ao cliente e a administradora e os processos rápidos e transparentes são diferencias que o Grupo Pro Security oferece às administradoras de condomínio que, muitas vezes, têm a missão de gerenciar os serviços terceirizados nos condomínios.</p>
                                 <p>Mensalmente, encaminhamos à administradora a comprovação de regularidade dos funcionários alocados a cada condomínio, como Folha de Pagamento, INSS e FGTS.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
         DB::table('texts')->insert([
             'id' => 50,
@@ -576,7 +576,7 @@ class TextSeeder extends Seeder {
                                 </ul>
                                 <p>Para consultar uma solução exclusiva para sua empresa, <a href="proposta.html">entre em contato</a> com o Grupo Pro Security!</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
         DB::table('texts')->insert([
             'id' => 51,
@@ -586,7 +586,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O Grupo Pro Security desenvolve projetos específicos para estabelecimentos de ensino. Diante desta iniciativa, o profissional de segurança desta área age em sincronia com as rotinas diárias das escolas e conta com o apoio tecnológico dos sistemas de alarme e circuitos fechados de televisão. Além de treinamentos constantes, com o objetivo de inibir não somente ações de vandalismo, mas também, de desmotivar possíveis roubos, tráfico de entorpecentes ao redor da escola e até mesmo sequestros, o Grupo Pro Security nas escolas é uma alternativa diferenciada e de qualidade, a fim de trazer mais segurança e tranquilidade aos pais, estudantes e funcionários. Dentro do portfólio de clientes, o Grupo Pro Security atende instituições de ensino há mais de 15 anos.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
 
         DB::table('texts')->insert([
@@ -642,7 +642,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>Ser líder e referência no segmento de prestação de serviços de segurança, monitoramento, conservação e limpeza do Estado de São Paulo.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
 
         DB::table('texts')->insert([
@@ -658,7 +658,7 @@ class TextSeeder extends Seeder {
                               <li> Inovação e aprimoramento dos processos e tecnologias.</li>
                             </ul>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
 
         DB::table('texts')->insert([
@@ -669,7 +669,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => NULL,
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
 
         DB::table('texts')->insert([
@@ -695,7 +695,7 @@ class TextSeeder extends Seeder {
                             <p>Tranquilidade: o contratante não será envolvido em eventuais processos criminais pela contratação de segurança irregular;</p>
                             <p>Retorno Social: valoriza a prestadora que é socialmente responsável, respeita o piso salarial da categoria e apresenta situação regularizada em órgãos públicos.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
 
         DB::table('texts')->insert([
@@ -706,7 +706,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O Prêmio Master Escolas é organizado pela editora da Revista Produtos e Serviços, ABC Educatio e foi criado para valorizar as empresas que realizam um trabalho sério no oferecimento de produtos e serviços às escolas de todo o país.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
 
         DB::table('texts')->insert([
@@ -717,7 +717,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>A Associação Brasileira do Mercado Limpeza Profissional - Abralimp é uma entidade civil, sem fins lucrativos e de âmbito nacional. A Abralimp é responsável pelo enquadramento do setor da limpeza profissional do Brasil aos mais modernos conceitos de tecnologia e serviços agregados do mundo, proporcionando ambientes públicos e privados limpos com a garantia de saúde e bem-estar.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
 
         DB::table('texts')->insert([
@@ -728,7 +728,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O SESVESP - Sindicato das Empresas de Segurança Privada, Segurança Eletrônica e Cursos de Formação do Estado de São Paulo recebeu sua Carta Sindical em 1988, quando havia muito ainda a ser feito pela categoria. Desde sua fundação, o SESVESP vem acompanhando a evolução do mercado através de dados estatísticos para ampliar sua atuação e dessa forma cumprir com mais eficácia o seu papel de entidade representativa.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 5,
         ]);
 
         DB::table('texts')->insert([
@@ -739,7 +739,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>A ABREVIS - Associação Brasileira de Empresas de Segurança e Vigilância foi fundada em 1970. Como entidade que congrega e representa a categoria econômica de empresas de segurança e vigilância privada no BRASIL, evoluiu muito como prestadora de serviços, objetivando sempre o bom atendimento às suas associadas.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 6,
         ]);
 
         DB::table('texts')->insert([
@@ -773,7 +773,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>A fundação busca novas perspectivas de vida para crianças e adolescentes que estão em situação de vulnerabilidade social. As ações que envolvem atividades de arte, cultura, comunicação, esporte, lazer, cidadania e educação para o trabalho com colaborações mensais do Grupo Pro Security.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
 
         DB::table('texts')->insert([
@@ -785,7 +785,7 @@ class TextSeeder extends Seeder {
             'content' => '<p>(Sociedade Amigos do Morumbi e Vila Suzana)<br>
                             O projeto busca integrar e reunir pessoas voluntárias e moradores da região do Morumbi empenhados a melhorar o bem-estar social da região.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
 
         DB::table('texts')->insert([
@@ -796,7 +796,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>(O projeto busca mobilizar pessoas voluntárias para arrecadar alimentos destinados aos mais necessitados moradores da Favela Vila da Praia, no Morumbi.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
 
         DB::table('texts')->insert([
@@ -807,7 +807,7 @@ class TextSeeder extends Seeder {
             'subtitle' => NULL,
             'content' => '<p>O Grupo Pro Security colabora com os mais diversos donativos para atender crianças e adolescentes assistidos por esta entidade. Conheça mais sobre estas ações sociais!</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 5,
         ]);
 
         DB::table('texts')->insert([
@@ -840,7 +840,7 @@ class TextSeeder extends Seeder {
             'subtitle' => '300',
             'content' => 'ipsem lorem<br>ipsem lorem ru<br>ipsem',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
 
         DB::table('texts')->insert([
@@ -851,7 +851,7 @@ class TextSeeder extends Seeder {
             'subtitle' => '60',
             'content' => 'ipsem lorem<br>ipsem lorem ru<br>ipsem',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
 
         DB::table('texts')->insert([
@@ -960,7 +960,7 @@ class TextSeeder extends Seeder {
                             </li>
                         </ul>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
         ]);
 
         DB::table('texts')->insert([
@@ -975,7 +975,7 @@ class TextSeeder extends Seeder {
                                 Além disto, temos um programa específico de desenvolvimento de líderes e zeladores operacionais, focado na qualidade do atendimento e na gestão de pessoas.</p>
                                 <p>Todos os colaboradores recebem o informativo PROfissional mensalmente, estendendo o conhecimento à distancia<strong>PRO SECURITY</strong>, sobre postura, procedimentos, atenção e dicas de segurança para o dia à dia da operação.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
 
         DB::table('texts')->insert([
@@ -995,7 +995,7 @@ class TextSeeder extends Seeder {
                                     <li>Equipe comercial treinada e preparada com foco no atendimento ao cliente</li>
                                 </ul>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
 
         DB::table('texts')->insert([
@@ -1015,7 +1015,7 @@ class TextSeeder extends Seeder {
                                 </ul>
                                 <p>Desde a suam concepção a sede do Grupo Pro Security foi projetada para obter maior aproveitamento da luz natural, além de prever infraestrutura aparente e acabamento em concreto (menos gesso, tinta e resíduos causados pela obra)visando melhor desempenho e menor impacto ambiental.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 5,
         ]);
 
         DB::table('texts')->insert([
@@ -1101,7 +1101,7 @@ class TextSeeder extends Seeder {
             'content' => '<p>PABX: (11) 3512-8100<br>
                             Central 24 Horas: (11) 3512-8118</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 2,
 
         ]);
 
@@ -1114,7 +1114,7 @@ class TextSeeder extends Seeder {
             'content' => '<p>Central 24 Horas: (11) 3512-8118<br>
                             Departamento Pessoal: (11) 3512-8161</p><br>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 3,
         ]);
 
         DB::table('texts')->insert([
@@ -1126,7 +1126,7 @@ class TextSeeder extends Seeder {
             'content' => '<p>Entre em contato com a Área Comercial do Grupo Pro Security, disponível de 2ª a 6ª feira, das 08h00 às 18h00, pelo telefone (11) 3512-8100 ou através do e-mail, utilizando o formulário abaixo, e receba informações ou esclareça dúvidas sobre todos os nossos serviços.</p>
                             <p>Teremos grande satisfação em atendê-lo.</p>',
             'priority' => 1,
-            'order' => 1,
+            'order' => 4,
         ]);
     }
 }
