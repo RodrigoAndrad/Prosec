@@ -17310,6 +17310,9 @@ a.is-muted:hover {
 
 .modal {
   z-index: 2000000;
+  margin-left: 0;
+  padding-left: 0;
+  width: 100%;
 }
 
 .m-t-0 {

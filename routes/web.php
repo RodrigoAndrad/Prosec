@@ -94,7 +94,9 @@ Route::prefix('manage')->middleware('role:desenvolvedor|administrador|editor|aut
   //Route::resource('/posts', 'PostController');
 });
 
-Route::get('/manage/home', 'HomeController@index')->name('manage.home');
+Route::get('/manage/home', function(){
+    return redirect('manage/dashboard');
+})->name('manage.home');
 //Route::view('/manage/home', 'manage.home');
 Route::get('/console', function () {
     return redirect('manage/dashboard');

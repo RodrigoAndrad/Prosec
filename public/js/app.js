@@ -41302,6 +41302,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -41311,8 +41319,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         label: String
     },
     mounted: function mounted() {
-        // console.log('Component mounted.')
+        this.originalFieldValue = this.fieldValue;
     },
+    created: function created() {},
 
     methods: {
         edit: function edit(event, key) {
@@ -41322,26 +41331,107 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('#' + this.name + 'SaveBttn').attr('disabled', false);
             $('#' + this.name + 'SaveBttn').css("display", "inline-block");
             $('#' + this.name + 'EditBttn').hide();
+            $('#' + this.name + 'ResetBttn').hide();
+            $('#' + this.name + 'Input').focus();
         },
         cancel: function cancel() {
+            this.originalFieldValue = this.fieldValue;
             $('#' + this.name + 'Input').prop("disabled", true);
             $('#' + this.name + 'CancelBttn').attr('disabled', true);
             $('#' + this.name + 'CancelBttn').css("display", "none");
             $('#' + this.name + 'SaveBttn').attr('disabled', true);
             $('#' + this.name + 'SaveBttn').css("display", "none");
             $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.cancelSaveCallback();
         },
         save: function save() {
+            this.confirmSave();
+        },
+        reset: function reset() {
+            this.originalFieldValue = '';
+            this.edit();
+        },
+        confirmSave: function confirmSave() {
+            var _this = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this.confirmSaveCallback();_this.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this.confirmation) {
+                        _this.cancelSaveCallback();
+                    }_this.confirmation = null;
+                }
+            });
+        },
+        confirmSaveCallback: function confirmSaveCallback() {
+            var _this2 = this;
+
             $('#' + this.name + 'Input').prop("disabled", true);
             $('#' + this.name + 'CancelBttn').attr('disabled', true);
             $('#' + this.name + 'CancelBttn').css("display", "none");
             $('#' + this.name + 'SaveBttn').attr('disabled', true);
             $('#' + this.name + 'SaveBttn').css("display", "none");
             $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.value
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this2.$emit('ajax-complete', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
+            //setTimeout(() => this.returnToast('is-success','Alteração salva com sucesso!'), 3 * 1000);
+            //this.returnToast('is-success','Alteração salva com sucesso!');
+        },
+        cancelSaveCallback: function cancelSaveCallback() {
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.returnToast('is-danger', 'Não se esqueça de salvar as alterações </br>ou elas serão perdidas.');
+        },
+        changeCampaingValue: function changeCampaingValue(type, message) {
+
+            this.returnToast(type, message);
+            /*
+            axios.get("http://api.icndb.com/jokes/random/10")
+                .then((response)  =>  { alert(response) })
+            */
+        },
+        returnToast: function returnToast(type, message) {
+            this.$toast.open({
+                message: '' + message,
+                queue: false,
+                type: type,
+                position: 'is-bottom-right'
+                // container: '#app'
+            });
         }
     },
     data: function data() {
-        return {};
+        return {
+            confirmation: null,
+            originalFieldValue: null
+        };
+    },
+    watch: {
+        function: function _function() {
+            this.originalFieldValue;
+        }
     }
 });
 
@@ -41370,15 +41460,33 @@ var render = function() {
                   attrs: { label: "Clique em Editar para Editar o Conteúdo" }
                 },
                 [
-                  _c("b-input", {
-                    staticStyle: { "min-width": "100%" },
-                    attrs: {
-                      placeholder: this.placeholderText,
-                      value: this.fieldValue,
-                      id: this.name + "Input",
-                      disabled: ""
-                    }
-                  })
+                  _c(
+                    "keep-alive",
+                    [
+                      _c("b-input", {
+                        staticStyle: { "min-width": "100%" },
+                        attrs: {
+                          placeholder: this.placeholderText,
+                          id: this.name + "Input",
+                          type: "text",
+                          min: "1",
+                          max: "256",
+                          maxlength: 256,
+                          minlength: 1,
+                          disabled: "",
+                          required: ""
+                        },
+                        model: {
+                          value: this.originalFieldValue,
+                          callback: function($$v) {
+                            _vm.$set(this, "originalFieldValue", $$v)
+                          },
+                          expression: "this.originalFieldValue"
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -41389,8 +41497,8 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "is-pulled-left p-t-35" }, [
+      _c("div", { staticClass: "column is-2" }, [
+        _c("div", { staticClass: "p-t-35" }, [
           _c(
             "a",
             {
@@ -41409,6 +41517,21 @@ var render = function() {
           _c(
             "a",
             {
+              staticClass: "button is-white is-small has-shadow",
+              staticStyle: { display: "inline-block" },
+              attrs: { id: this.name + "ResetBttn" },
+              on: {
+                click: function($event) {
+                  _vm.reset()
+                }
+              }
+            },
+            [_c("span", [_vm._v("Limpar")]), _vm._v(" "), _vm._m(1)]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
               staticClass: "button is-danger is-small",
               staticStyle: { display: "none" },
               attrs: { disabled: "", id: this.name + "CancelBttn" },
@@ -41418,7 +41541,7 @@ var render = function() {
                 }
               }
             },
-            [_c("span", [_vm._v("Cancelar")]), _vm._v(" "), _vm._m(1)]
+            [_c("span", [_vm._v("Cancelar")]), _vm._v(" "), _vm._m(2)]
           ),
           _vm._v(" "),
           _c(
@@ -41433,7 +41556,7 @@ var render = function() {
                 }
               }
             },
-            [_c("span", [_vm._v("Salvar")]), _vm._v(" "), _vm._m(2)]
+            [_c("span", [_vm._v("Salvar")]), _vm._v(" "), _vm._m(3)]
           )
         ])
       ])
@@ -41447,6 +41570,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
       _c("i", { staticClass: "fa fa-pencil-square-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
+      _c("i", { staticClass: "fa fa-eraser", attrs: { "aria-hidden": "true" } })
     ])
   },
   function() {
@@ -41567,6 +41698,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -41576,8 +41715,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         label: String
     },
     mounted: function mounted() {
-        //  console.log('Component mounted.')
+        this.originalFieldValue = this.fieldValue;
     },
+    created: function created() {},
 
     methods: {
         edit: function edit(event, key) {
@@ -41587,26 +41727,107 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('#' + this.name + 'SaveBttn').attr('disabled', false);
             $('#' + this.name + 'SaveBttn').css("display", "inline-block");
             $('#' + this.name + 'EditBttn').hide();
+            $('#' + this.name + 'ResetBttn').hide();
+            $('#' + this.name + 'Input').focus();
         },
         cancel: function cancel() {
+            this.originalFieldValue = this.fieldValue;
             $('#' + this.name + 'Input').prop("disabled", true);
             $('#' + this.name + 'CancelBttn').attr('disabled', true);
             $('#' + this.name + 'CancelBttn').css("display", "none");
             $('#' + this.name + 'SaveBttn').attr('disabled', true);
             $('#' + this.name + 'SaveBttn').css("display", "none");
             $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.cancelSaveCallback();
         },
         save: function save() {
+            this.confirmSave();
+        },
+        reset: function reset() {
+            this.originalFieldValue = '';
+            this.edit();
+        },
+        confirmSave: function confirmSave() {
+            var _this = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this.confirmSaveCallback();_this.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this.confirmation) {
+                        _this.cancelSaveCallback();
+                    }_this.confirmation = null;
+                }
+            });
+        },
+        confirmSaveCallback: function confirmSaveCallback() {
+            var _this2 = this;
+
             $('#' + this.name + 'Input').prop("disabled", true);
             $('#' + this.name + 'CancelBttn').attr('disabled', true);
             $('#' + this.name + 'CancelBttn').css("display", "none");
             $('#' + this.name + 'SaveBttn').attr('disabled', true);
             $('#' + this.name + 'SaveBttn').css("display", "none");
             $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.value
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this2.$emit('ajax-complete', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
+            //setTimeout(() => this.returnToast('is-success','Alteração salva com sucesso!'), 3 * 1000);
+            // this.returnToast('is-success','Alteração salva com sucesso!');
+        },
+        cancelSaveCallback: function cancelSaveCallback() {
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.returnToast('is-danger', 'Não se esqueça de salvar as alterações </br>ou elas serão perdidas.');
+        },
+        changeCampaingValue: function changeCampaingValue(type, message) {
+
+            this.returnToast(type, message);
+            /*
+            axios.get("http://api.icndb.com/jokes/random/10")
+                .then((response)  =>  { alert(response) })
+            */
+        },
+        returnToast: function returnToast(type, message) {
+            this.$toast.open({
+                message: '' + message,
+                queue: false,
+                type: type,
+                position: 'is-bottom-right'
+                // container: '#app'
+            });
         }
     },
     data: function data() {
-        return {};
+        return {
+            confirmation: null,
+            originalFieldValue: null
+        };
+    },
+    watch: {
+        function: function _function() {
+            this.originalFieldValue;
+        }
     }
 });
 
@@ -41635,18 +41856,21 @@ var render = function() {
                   attrs: { label: "Clique em Editar para Editar o Conteúdo" }
                 },
                 [
-                  _c("textarea", {
-                    staticClass: "textarea",
-                    staticStyle: { "min-width": "100%", resize: "none" },
-                    attrs: {
-                      type: "text",
-                      placeholder: this.placeholderText,
-                      id: this.name + "Input",
-                      disabled: ""
-                    },
-                    domProps: { innerHTML: _vm._s(this.fieldValue) }
-                  })
-                ]
+                  _c("keep-alive", [
+                    _c("textarea", {
+                      staticClass: "textarea",
+                      staticStyle: { "min-width": "100%", resize: "none" },
+                      attrs: {
+                        type: "text",
+                        placeholder: this.placeholderText,
+                        id: this.name + "Input",
+                        disabled: ""
+                      },
+                      domProps: { innerHTML: _vm._s(this.originalFieldValue) }
+                    })
+                  ])
+                ],
+                1
               )
             ],
             1
@@ -41655,60 +41879,68 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c(
-          "div",
-          {
-            staticClass: "is-pulled-left",
-            staticStyle: { "padding-top": "40%" }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "button is-link is-small has-shadow",
-                staticStyle: { display: "inline-block" },
-                attrs: { id: this.name + "EditBttn" },
-                on: {
-                  click: function($event) {
-                    _vm.edit()
-                  }
+      _c("div", { staticClass: "column is-2" }, [
+        _c("div", { staticStyle: { "padding-top": "40%" } }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-link is-small has-shadow",
+              staticStyle: { display: "inline-block" },
+              attrs: { id: this.name + "EditBttn" },
+              on: {
+                click: function($event) {
+                  _vm.edit()
                 }
-              },
-              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "button is-danger is-small",
-                staticStyle: { display: "none" },
-                attrs: { disabled: "", id: this.name + "CancelBttn" },
-                on: {
-                  click: function($event) {
-                    _vm.cancel()
-                  }
+              }
+            },
+            [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "button is-white is-small has-shadow",
+              staticStyle: { display: "inline-block" },
+              attrs: { id: this.name + "ResetBttn" },
+              on: {
+                click: function($event) {
+                  _vm.reset()
                 }
-              },
-              [_c("span", [_vm._v("Cancelar")]), _vm._v(" "), _vm._m(1)]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "button is-success is-small",
-                staticStyle: { display: "none" },
-                attrs: { disabled: "", id: this.name + "SaveBttn" },
-                on: {
-                  click: function($event) {
-                    _vm.save()
-                  }
+              }
+            },
+            [_c("span", [_vm._v("Limpar")]), _vm._v(" "), _vm._m(1)]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "button is-danger is-small",
+              staticStyle: { display: "none" },
+              attrs: { disabled: "", id: this.name + "CancelBttn" },
+              on: {
+                click: function($event) {
+                  _vm.cancel()
                 }
-              },
-              [_c("span", [_vm._v("Salvar")]), _vm._v(" "), _vm._m(2)]
-            )
-          ]
-        )
+              }
+            },
+            [_c("span", [_vm._v("Cancelar")]), _vm._v(" "), _vm._m(2)]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "button is-success is-small",
+              staticStyle: { display: "none" },
+              attrs: { disabled: "", id: this.name + "SaveBttn" },
+              on: {
+                click: function($event) {
+                  _vm.save()
+                }
+              }
+            },
+            [_c("span", [_vm._v("Salvar")]), _vm._v(" "), _vm._m(3)]
+          )
+        ])
       ])
     ])
   ])
@@ -41720,6 +41952,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
       _c("i", { staticClass: "fa fa-pencil-square-o" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-small p-l-10 p-r-10" }, [
+      _c("i", { staticClass: "fa fa-eraser", attrs: { "aria-hidden": "true" } })
     ])
   },
   function() {
@@ -41838,20 +42078,202 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {},
-    props: ['banners', 'order', 'imageDir'],
+    props: ['banners', 'order', 'imageDir', 'controls', 'linkSwitch'],
     methods: {
         showSlideControls: function showSlideControls(event) {
             $('#imageCtrlSlide').show();
         },
         hideSlideControls: function hideSlideControls(event) {
             $('#imageCtrlSlide').hide();
+        },
+        edit: function edit(event) {
+            this.isCardModalActive = true;
+        },
+        cancel: function cancel() {
+            this.originalFieldValue = this.fieldValue;
+            this.cancelSaveCallback();
+        },
+        save: function save() {
+            this.confirmSave();
+        },
+        reset: function reset() {
+            this.originalFieldValue = '';
+            this.edit();
+        },
+        confirmSave: function confirmSave() {
+            var _this = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this.confirmSaveCallback();_this.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this.confirmation) {
+                        _this.cancelSaveCallback();
+                    }_this.confirmation = null;
+                }
+            });
+        },
+        confirmSaveCallback: function confirmSaveCallback() {
+            var _this2 = this;
+
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.value
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this2.$emit('ajax-complete', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
+            //setTimeout(() => this.returnToast('is-success','Alteração salva com sucesso!'), 3 * 1000);
+            //this.returnToast('is-success','Alteração salva com sucesso!');
+        },
+        cancelSaveCallback: function cancelSaveCallback() {
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.returnToast('is-danger', 'Não se esqueça de salvar as alterações </br>ou elas serão perdidas.');
+        },
+        changeCampaingValue: function changeCampaingValue(type, message) {
+
+            this.returnToast(type, message);
+            /*
+            axios.get("http://api.icndb.com/jokes/random/10")
+                .then((response)  =>  { alert(response) })
+            */
+        },
+        returnToast: function returnToast(type, message) {
+            this.$toast.open({
+                message: '' + message,
+                queue: false,
+                type: type,
+                position: 'is-bottom-right'
+                // container: '#app'
+            });
+        },
+        deleteDropFile: function deleteDropFile(index) {
+            this.dropFiles.splice(index, 1);
+        },
+        cancelModal: function cancelModal() {
+            this.isCardModalActive = false;
+            this.cancelSaveCallback();
+        },
+        saveBanner: function saveBanner() {
+            this.isCardModalActive = false;
+            this.confirmSaveBanner();
+        },
+        confirmSaveBanner: function confirmSaveBanner() {
+            var _this3 = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this3.confirmSaveBannerCallback();_this3.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this3.confirmation) {
+                        _this3.cancelSaveCallback();
+                    }_this3.confirmation = null;
+                }
+            });
+        },
+        confirmSaveBannerCallback: function confirmSaveBannerCallback() {
+            var _this4 = this;
+
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.value
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this4.returnToast('is-success', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
         }
     },
     data: function data() {
-        return {};
+        return {
+            isCardModalActive: false,
+            dropFiles: []
+        };
     },
     mounted: function mounted() {}
 });
@@ -41880,22 +42302,24 @@ var render = function() {
       _c("div", { staticClass: "columns" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "column", attrs: { id: "switch" } },
-          [
-            _c("slide-switch-component", {
-              attrs: {
-                linkValue:
-                  Array.isArray(this.banners[0].links) &&
-                  this.banners[0].links.length
-                    ? "Link Ativo"
-                    : "Link Inativo"
-              }
-            })
-          ],
-          1
-        )
+        this.linkSwitch === true
+          ? _c(
+              "div",
+              { staticClass: "column", attrs: { id: "switch" } },
+              [
+                _c("slide-switch-component", {
+                  attrs: {
+                    linkValue:
+                      Array.isArray(this.banners[0].links) &&
+                      this.banners[0].links.length
+                        ? "Link Ativo"
+                        : "Link Inativo"
+                  }
+                })
+              ],
+              1
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("figure", [
@@ -41908,56 +42332,232 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
+      this.controls == 1 || this.controls == 2
+        ? _c(
+            "div",
+            {
+              staticClass: "columns p-t-5",
+              staticStyle: { display: "none" },
+              attrs: { id: "imageCtrlSlide" }
+            },
+            [
+              _c("div", { staticClass: "column" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-link is-small is-block",
+                    attrs: { id: "pageBannerEditlBttn" },
+                    on: {
+                      click: function($event) {
+                        _vm.edit()
+                      }
+                    }
+                  },
+                  [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(1)]
+                )
+              ]),
+              _vm._v(" "),
+              this.controls == 2
+                ? _c("div", { staticClass: "column" })
+                : _vm._e(),
+              _vm._v(" "),
+              this.controls == 2
+                ? _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small is-block",
+                        attrs: { id: "pageDescriptionCancelBttn" },
+                        on: {
+                          onclick: function($event) {
+                            _vm.cancel($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                          _vm._v("Apagar")
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(2)
+                      ]
+                    )
+                  ])
+                : _vm._e()
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c(
-        "div",
+        "b-modal",
         {
-          staticClass: "columns p-t-5",
-          staticStyle: { display: "none" },
-          attrs: { id: "imageCtrlSlide" }
+          attrs: {
+            active: _vm.isCardModalActive,
+            width: 1024,
+            height: 800,
+            scroll: "keep",
+            "can-cancel": ["button"],
+            id: "modalBanner"
+          },
+          on: {
+            "update:active": function($event) {
+              _vm.isCardModalActive = $event
+            },
+            "ajax-complete": function($event) {
+              _vm.returnToast("is-success", "Alteração salva com sucesso!")
+            }
+          }
         },
         [
-          _c("div", { staticClass: "column is-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button is-link is-small is-block",
-                attrs: { id: "pageBannerEditlBttn" },
-                on: {
-                  onclick: function($event) {
-                    _vm.edit($event)
-                  }
-                }
-              },
-              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(1)]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-4" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button is-danger is-small is-block",
-                attrs: { id: "pageDescriptionCancelBttn" },
-                on: {
-                  onclick: function($event) {
-                    _vm.cancel($event)
-                  }
-                }
-              },
-              [
-                _c("span", { staticClass: "p-l-10 p-r-10" }, [
-                  _vm._v("Apagar")
-                ]),
-                _vm._v(" "),
-                _vm._m(2)
-              ]
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "card" },
+            [
+              _c(
+                "div",
+                { staticClass: "card-image p-t-20 p-l-20" },
+                [
+                  _c(
+                    "b-field",
+                    [
+                      _c(
+                        "b-upload",
+                        {
+                          attrs: {
+                            native: "",
+                            accept: "png, jpeg, jpg, bmp",
+                            "drag-drop": ""
+                          },
+                          model: {
+                            value: _vm.dropFiles,
+                            callback: function($$v) {
+                              _vm.dropFiles = $$v
+                            },
+                            expression: "dropFiles"
+                          }
+                        },
+                        [
+                          _c("section", { staticClass: "section" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "content has-text-centered is-fullwidth"
+                              },
+                              [
+                                _c(
+                                  "p",
+                                  [
+                                    _c("b-icon", {
+                                      attrs: {
+                                        icon: "upload",
+                                        size: "is-large"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "Arraste e solte aqui o arquivo de imagem ou clique para atualizar o conteúdo"
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "p-l-20 p-r-20" }, [_c("hr")]),
+              _vm._v(" "),
+              _c(
+                "b-field",
+                {
+                  staticClass: "m-l-10 m-r-10 m-t-5",
+                  attrs: { label: "Texto Alternativo:" }
+                },
+                [
+                  _c("b-input", {
+                    attrs: { maxlength: "256", type: "is-danger" },
+                    model: {
+                      value: this.banners[0].images[0].alt,
+                      callback: function($$v) {
+                        _vm.$set(this.banners[0].images[0], "alt", $$v)
+                      },
+                      expression: "this.banners[0].images[0].alt"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-content" }, [
+                _c("div", { staticClass: "content columns" }, [
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small is-block",
+                        attrs: { id: "pageDescriptionCancelBttn" },
+                        on: {
+                          click: function($event) {
+                            _vm.cancelModal()
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                          _vm._v("Cancelar")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "icon is-small" }, [
+                          _c("i", { staticClass: "fa fa-ban" })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-link is-small is-block",
+                        attrs: { id: "pageBannerEditlBttn" },
+                        on: {
+                          click: function($event) {
+                            _vm.saveBanner()
+                          }
+                        }
+                      },
+                      [
+                        _c("span", [_vm._v("Salvar")]),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          { staticClass: "icon is-small p-l-10 p-r-10" },
+                          [_c("i", { staticClass: "fa fa-floppy-o" })]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ],
+            1
+          )
         ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -46613,21 +47213,221 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {},
-    props: ['boxes', 'imageDir', 'order'],
+    props: ['boxes', 'imageDir', 'order', 'controls', 'linkSwitch', 'controls', 'linkSwitch'],
     methods: {
         showControls: function showControls(event) {
-            $('#boxesCtrlSlide' + this.boxes.id).show();
-            console.log('#boxesCtrlSlide' + key);
+            $('#textIntroCtrlSlide').show();
         },
         hideControls: function hideControls(event) {
-            $('#boxesCtrlSlide' + this.boxes.id).hide();
+            $('#textIntroCtrlSlide').hide();
+        },
+        edit: function edit(event) {
+            this.isCardModalActive = true;
+        },
+        cancel: function cancel() {
+            this.originalFieldValue = this.fieldValue;
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.cancelSaveCallback();
+        },
+        save: function save() {
+            this.confirmSave();
+        },
+        reset: function reset() {
+            this.originalFieldValue = '';
+            this.edit();
+        },
+        confirmSave: function confirmSave() {
+            var _this = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this.confirmSaveCallback();_this.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this.confirmation) {
+                        _this.cancelSaveCallback();
+                    }_this.confirmation = null;
+                }
+            });
+        },
+        confirmSaveCallback: function confirmSaveCallback() {
+            var _this2 = this;
+
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.value
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this2.$emit('ajax-complete', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
+            //setTimeout(() => this.returnToast('is-success','Alteração salva com sucesso!'), 3 * 1000);
+            //this.returnToast('is-success','Alteração salva com sucesso!');
+        },
+        cancelSaveCallback: function cancelSaveCallback() {
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.returnToast('is-danger', 'Não se esqueça de salvar as alterações </br>ou elas serão perdidas.');
+        },
+        changeCampaingValue: function changeCampaingValue(type, message) {
+
+            this.returnToast(type, message);
+            /*
+            axios.get("http://api.icndb.com/jokes/random/10")
+                .then((response)  =>  { alert(response) })
+            */
+        },
+        returnToast: function returnToast(type, message) {
+            this.$toast.open({
+                message: '' + message,
+                queue: false,
+                type: type,
+                position: 'is-bottom-right'
+                // container: '#app'
+            });
+        },
+        deleteDropFile: function deleteDropFile(index) {
+            this.dropFiles.splice(index, 1);
+        },
+        cancelModal: function cancelModal() {
+            this.isCardModalActive = false;
+            this.cancelSaveCallback();
+        },
+        saveBanner: function saveBanner() {
+            this.isCardModalActive = false;
+            this.confirmSaveBanner();
+        },
+        confirmSaveBanner: function confirmSaveBanner() {
+            var _this3 = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this3.confirmSaveBannerCallback();_this3.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this3.confirmation) {
+                        _this3.cancelSaveCallback();
+                    }_this3.confirmation = null;
+                }
+            });
+        },
+        confirmSaveBannerCallback: function confirmSaveBannerCallback() {
+            var _this4 = this;
+
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.value
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this4.returnToast('is-success', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
         }
     },
     data: function data() {
-        return {};
+        return {
+            isCardModalActive: false,
+            dropFiles: [],
+            config: {
+                toolbar: [['Preview', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList', 'Outdent', 'Indent', '-', 'Blockquote'], ['CreateDiv', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'], ['Link', 'Unlink', 'Anchor']],
+                height: 100
+            }
+        };
     },
     mounted: function mounted() {}
 });
@@ -46660,23 +47460,25 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "column", attrs: { id: "switch" } },
-          [
-            _c("slide-switch-component", {
-              attrs: {
-                linkValue:
-                  this.boxes.links &&
-                  Array.isArray(this.boxes.links) &&
-                  this.boxes.links.length
-                    ? "Link Ativo"
-                    : "Link Inativo"
-              }
-            })
-          ],
-          1
-        )
+        this.linkSwitch === true
+          ? _c(
+              "div",
+              { staticClass: "column", attrs: { id: "switch" } },
+              [
+                _c("slide-switch-component", {
+                  attrs: {
+                    linkValue:
+                      this.boxes.links &&
+                      Array.isArray(this.boxes.links) &&
+                      this.boxes.links.length
+                        ? "Link Ativo"
+                        : "Link Inativo"
+                  }
+                })
+              ],
+              1
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "columns" }, [
@@ -46706,56 +47508,278 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      this.controls == 1 || this.controls == 2
+        ? _c(
+            "div",
+            {
+              staticClass: "columns p-t-5",
+              staticStyle: { display: "none" },
+              attrs: { id: "textIntroCtrlSlide" }
+            },
+            [
+              _c("div", { staticClass: "column" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-link is-small is-block",
+                    attrs: { id: "pageBannerEditlBttn" },
+                    on: {
+                      click: function($event) {
+                        _vm.edit()
+                      }
+                    }
+                  },
+                  [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+                )
+              ]),
+              _vm._v(" "),
+              this.controls == 2
+                ? _c("div", { staticClass: "column" })
+                : _vm._e(),
+              _vm._v(" "),
+              this.controls == 2
+                ? _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small is-block",
+                        attrs: { id: "pageDescriptionCancelBttn" },
+                        on: {
+                          onclick: function($event) {
+                            _vm.cancel($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                          _vm._v("Apagar")
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(1)
+                      ]
+                    )
+                  ])
+                : _vm._e()
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c(
-        "div",
+        "b-modal",
         {
-          staticClass: "columns p-t-5",
-          staticStyle: { display: "none" },
-          attrs: { id: "boxesCtrlSlide" + this.boxes.id }
+          attrs: {
+            active: _vm.isCardModalActive,
+            width: 1024,
+            height: 800,
+            scroll: "keep",
+            "can-cancel": ["button"],
+            id: "modalTextIntro"
+          },
+          on: {
+            "update:active": function($event) {
+              _vm.isCardModalActive = $event
+            },
+            "ajax-complete": function($event) {
+              _vm.returnToast("is-success", "Alteração salva com sucesso!")
+            }
+          }
         },
         [
-          _c("div", { staticClass: "column is-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button is-link is-small is-block",
-                attrs: { id: "pageBannerEditlBttn" + this.order },
-                on: {
-                  onclick: function($event) {
-                    _vm.edit($event, this.order)
+          _c(
+            "div",
+            { staticClass: "card" },
+            [
+              _c(
+                "div",
+                { staticClass: "card-image p-t-20 p-l-25" },
+                [
+                  _c(
+                    "b-field",
+                    [
+                      _c(
+                        "b-upload",
+                        {
+                          attrs: {
+                            native: "",
+                            accept: "png, jpeg, jpg, bmp",
+                            "drag-drop": ""
+                          },
+                          model: {
+                            value: _vm.dropFiles,
+                            callback: function($$v) {
+                              _vm.dropFiles = $$v
+                            },
+                            expression: "dropFiles"
+                          }
+                        },
+                        [
+                          _c("section", { staticClass: "section" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "content has-text-centered is-fullwidth"
+                              },
+                              [
+                                _c(
+                                  "p",
+                                  [
+                                    _c("b-icon", {
+                                      attrs: {
+                                        icon: "upload",
+                                        size: "is-large"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "Arraste e solte aqui o arquivo de imagem ou clique para atualizar o conteúdo"
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-field",
+                {
+                  staticClass: "m-l-10 m-r-10 m-t-5",
+                  attrs: { label: "Texto Alternativo:" }
+                },
+                [
+                  _c("b-input", {
+                    attrs: { maxlength: "256", type: "is-danger" },
+                    model: {
+                      value: this.boxes.images[0].alt,
+                      callback: function($$v) {
+                        _vm.$set(this.boxes.images[0], "alt", $$v)
+                      },
+                      expression: "this.boxes.images[0].alt"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "p-l-20 p-r-20" }, [_c("hr")]),
+              _vm._v(" "),
+              _c(
+                "b-field",
+                {
+                  staticClass: "m-l-10 m-r-10 m-t-5",
+                  attrs: { label: "Título:" }
+                },
+                [
+                  _c("b-input", {
+                    attrs: { maxlength: "256", type: "is-danger" },
+                    model: {
+                      value: this.boxes.texts[0].title,
+                      callback: function($$v) {
+                        _vm.$set(this.boxes.texts[0], "title", $$v)
+                      },
+                      expression: "this.boxes.texts[0].title"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-field",
+                {
+                  staticClass: "m-l-10 m-r-10",
+                  attrs: {
+                    label: "Texto:",
+                    maxlength: "256",
+                    type: "is-danger"
                   }
-                }
-              },
-              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-4" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button is-danger is-small is-block",
-                attrs: { id: "pageDescriptionCancelBttn" + this.order },
-                on: {
-                  onclick: function($event) {
-                    _vm.cancel($event, this.order)
-                  }
-                }
-              },
-              [
-                _c("span", { staticClass: "p-l-10 p-r-10" }, [
-                  _vm._v("Apagar")
-                ]),
-                _vm._v(" "),
-                _vm._m(1)
-              ]
-            )
-          ])
+                },
+                [
+                  _c("vue-ckeditor", {
+                    attrs: { config: _vm.config },
+                    model: {
+                      value: this.boxes.texts[0].content,
+                      callback: function($$v) {
+                        _vm.$set(this.boxes.texts[0], "content", $$v)
+                      },
+                      expression: "this.boxes.texts[0].content"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-content" }, [
+                _c("div", { staticClass: "content columns" }, [
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small is-block",
+                        attrs: { id: "pageDescriptionCancelBttn" },
+                        on: {
+                          click: function($event) {
+                            _vm.cancelModal()
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                          _vm._v("Cancelar")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "icon is-small" }, [
+                          _c("i", { staticClass: "fa fa-ban" })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-link is-small is-block",
+                        attrs: { id: "pageBannerEditlBttn" },
+                        on: {
+                          click: function($event) {
+                            _vm.saveBanner()
+                          }
+                        }
+                      },
+                      [
+                        _c("span", [_vm._v("Salvar")]),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          { staticClass: "icon is-small p-l-10 p-r-10" },
+                          [_c("i", { staticClass: "fa fa-floppy-o" })]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ],
+            1
+          )
         ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -47359,24 +48383,273 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {},
-    props: ['banners', 'order', 'imageDir'],
+    props: ['banners', 'order', 'imageDir', 'controls', 'linkSwitch'],
     methods: {
-        showSlideControls: function showSlideControls(event) {
-            $('#imageCtrlSlide').show();
+        showControls: function showControls(event) {
+            $('#bannersCtrlSlide' + this.banners.id).show();
         },
-        hideSlideControls: function hideSlideControls(event) {
-            $('#imageCtrlSlide').hide();
+        hideControls: function hideControls(event) {
+            $('#bannersCtrlSlide' + this.banners.id).hide();
+        },
+        edit: function edit(event) {
+            this.isCardModalActive = true;
+        },
+        cancel: function cancel() {
+            this.originalFieldValue = this.fieldValue;
+            this.cancelSaveCallback();
+        },
+        save: function save() {
+            this.confirmSave();
+        },
+        reset: function reset() {
+            this.originalFieldValue = '';
+            this.edit();
+        },
+        confirmSave: function confirmSave() {
+            var _this = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this.confirmSaveCallback();_this.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this.confirmation) {
+                        _this.cancelSaveCallback();
+                    }_this.confirmation = null;
+                }
+            });
+        },
+        confirmSaveCallback: function confirmSaveCallback() {
+            var _this2 = this;
+
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.value
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this2.$emit('ajax-complete', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
+            //setTimeout(() => this.returnToast('is-success','Alteração salva com sucesso!'), 3 * 1000);
+            //this.returnToast('is-success','Alteração salva com sucesso!');
+        },
+        cancelSaveCallback: function cancelSaveCallback() {
+            $('#' + this.name + 'Input').prop("disabled", true);
+            $('#' + this.name + 'CancelBttn').attr('disabled', true);
+            $('#' + this.name + 'CancelBttn').css("display", "none");
+            $('#' + this.name + 'SaveBttn').attr('disabled', true);
+            $('#' + this.name + 'SaveBttn').css("display", "none");
+            $('#' + this.name + 'EditBttn').show();
+            $('#' + this.name + 'ResetBttn').show();
+            this.returnToast('is-danger', 'Não se esqueça de salvar as alterações </br>ou elas serão perdidas.');
+        },
+        changeCampaingValue: function changeCampaingValue(type, message) {
+
+            this.returnToast(type, message);
+            /*
+            axios.get("http://api.icndb.com/jokes/random/10")
+                .then((response)  =>  { alert(response) })
+            */
+        },
+        returnToast: function returnToast(type, message) {
+            this.$toast.open({
+                message: '' + message,
+                queue: false,
+                type: type,
+                position: 'is-bottom-right',
+                container: '#app'
+            });
+        },
+        deleteDropFile: function deleteDropFile(index) {
+            this.dropFiles.splice(index, 1);
+        },
+        cancelModal: function cancelModal() {
+            this.isCardModalActive = false;
+            this.cancelSaveCallback();
+        },
+        saveBanner: function saveBanner() {
+            this.isCardModalActive = false;
+            this.confirmSaveBanner();
+        },
+        confirmSaveBanner: function confirmSaveBanner() {
+            var _this3 = this;
+
+            this.$dialog.confirm({
+                title: 'Salvar Texto',
+                message: 'Você tem certeza de que quer <b>salvar</b> as alterações?',
+                cancelText: 'Cancelar',
+                confirmText: 'Confirmar',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this3.confirmSaveBannerCallback();_this3.confirmation = true;
+                },
+                onCancel: function onCancel() {
+                    if (!_this3.confirmation) {
+                        _this3.cancelSaveCallback();
+                    }_this3.confirmation = null;
+                }
+            });
+        },
+        confirmSaveBannerCallback: function confirmSaveBannerCallback() {
+            var _this4 = this;
+
+            var loadingComponent = this.$loading.open({
+                // container: this.isFullPage ? null : this.value
+                container: 'body'
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this4.returnToast('is-success', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
         }
     },
     data: function data() {
-        return {};
+        return {
+            isCardModalActive: false,
+            dropFiles: [],
+            isFullPage: true
+        };
     },
-    mounted: function mounted() {
-        console.log(this.banners);
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -47392,100 +48665,283 @@ var render = function() {
     {
       on: {
         mouseleave: function($event) {
-          _vm.hideSlideControls($event)
+          _vm.hideControls($event)
         },
         mouseover: function($event) {
-          _vm.showSlideControls($event)
+          _vm.showControls($event)
         }
       }
     },
     [
       _c("div", { staticClass: "columns" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "column is-6" }, [
+          _c("div", { attrs: { name: "order" } }, [
+            _vm._v(_vm._s(this.order) + "º")
+          ])
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "column", attrs: { id: "switch" } },
-          [
-            _c("slide-switch-component", {
-              attrs: { linkValue: "Link Inativo" }
-            })
-          ],
-          1
-        )
+        this.linkSwitch === true
+          ? _c(
+              "div",
+              { staticClass: "column", attrs: { id: "switch" } },
+              [
+                _c("slide-switch-component", {
+                  attrs: {
+                    linkValue:
+                      this.banners.links &&
+                      Array.isArray(this.banners.links) &&
+                      this.banners.links.length
+                        ? "Link Ativo"
+                        : "Link Inativo"
+                  }
+                })
+              ],
+              1
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
-      _c("figure", [
-        _c("img", {
-          attrs: {
-            src: _vm.imageDir + this.banners.src,
-            alt: this.banners.alt,
-            width: "100%"
-          }
-        })
+      _c("div", [
+        _c("figure", [
+          _c("img", {
+            attrs: {
+              src: _vm.imageDir + this.banners.src,
+              alt: this.banners.alt,
+              width: "100%"
+            }
+          })
+        ])
       ]),
+      _vm._v(" "),
+      this.controls == 1 || this.controls == 2
+        ? _c(
+            "div",
+            {
+              staticClass: "columns p-t-5",
+              staticStyle: { display: "none" },
+              attrs: { id: "bannersCtrlSlide" + this.banners.id }
+            },
+            [
+              _c("div", { staticClass: "column" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-link is-small is-block",
+                    attrs: { id: "pageBannerEditlBttn" + this.order },
+                    on: {
+                      click: function($event) {
+                        _vm.edit()
+                      }
+                    }
+                  },
+                  [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(0)]
+                )
+              ]),
+              _vm._v(" "),
+              this.controls == 2
+                ? _c("div", { staticClass: "column" })
+                : _vm._e(),
+              _vm._v(" "),
+              this.controls == 2
+                ? _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small is-block",
+                        attrs: { id: "pageDescriptionCancelBttn" + this.order },
+                        on: {
+                          click: function($event) {
+                            _vm.cancel($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                          _vm._v("Apagar")
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(1)
+                      ]
+                    )
+                  ])
+                : _vm._e()
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
-        "div",
+        "b-modal",
         {
-          staticClass: "columns p-t-5",
-          staticStyle: { display: "none" },
-          attrs: { id: "imageCtrlSlide" }
+          attrs: {
+            active: _vm.isCardModalActive,
+            width: 1024,
+            height: 800,
+            scroll: "keep",
+            "can-cancel": ["button"],
+            id: "modalBox" + this.order
+          },
+          on: {
+            "update:active": function($event) {
+              _vm.isCardModalActive = $event
+            },
+            "ajax-complete": function($event) {
+              _vm.returnToast("is-success", "Alteração salva com sucesso!")
+            }
+          }
         },
         [
-          _c("div", { staticClass: "column is-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button is-link is-small is-block",
-                attrs: { id: "pageBannerEditlBttn" },
-                on: {
-                  onclick: function($event) {
-                    _vm.edit($event)
-                  }
-                }
-              },
-              [_c("span", [_vm._v("Editar")]), _vm._v(" "), _vm._m(1)]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-4" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "column is-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button is-danger is-small is-block",
-                attrs: { id: "pageDescriptionCancelBttn" },
-                on: {
-                  onclick: function($event) {
-                    _vm.cancel($event)
-                  }
-                }
-              },
-              [
-                _c("span", { staticClass: "p-l-10 p-r-10" }, [
-                  _vm._v("Apagar")
-                ]),
-                _vm._v(" "),
-                _vm._m(2)
-              ]
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "card" },
+            [
+              _c(
+                "div",
+                { staticClass: "card-image p-t-20 p-l-20" },
+                [
+                  _c(
+                    "b-field",
+                    [
+                      _c(
+                        "b-upload",
+                        {
+                          attrs: {
+                            native: "",
+                            accept: "png, jpeg, jpg, bmp",
+                            "drag-drop": ""
+                          },
+                          model: {
+                            value: _vm.dropFiles,
+                            callback: function($$v) {
+                              _vm.dropFiles = $$v
+                            },
+                            expression: "dropFiles"
+                          }
+                        },
+                        [
+                          _c("section", { staticClass: "section" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "content has-text-centered is-fullwidth"
+                              },
+                              [
+                                _c(
+                                  "p",
+                                  [
+                                    _c("b-icon", {
+                                      attrs: {
+                                        icon: "upload",
+                                        size: "is-large"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "Arraste e solte aqui o arquivo de imagem ou clique para atualizar o conteúdo"
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "p-l-20 p-r-20" }, [_c("hr")]),
+              _vm._v(" "),
+              _c(
+                "b-field",
+                {
+                  staticClass: "m-l-10 m-r-10 m-t-5",
+                  attrs: { label: "Texto Alternativo:" }
+                },
+                [
+                  _c("b-input", {
+                    attrs: { maxlength: "256", type: "is-danger" },
+                    model: {
+                      value: this.banners.alt,
+                      callback: function($$v) {
+                        _vm.$set(this.banners, "alt", $$v)
+                      },
+                      expression: "this.banners.alt"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-content" }, [
+                _c("div", { staticClass: "content columns" }, [
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-danger is-small is-block",
+                        attrs: { id: "pageDescriptionCancelBttn" },
+                        on: {
+                          click: function($event) {
+                            _vm.cancelModal()
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "p-l-10 p-r-10" }, [
+                          _vm._v("Cancelar")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "icon is-small" }, [
+                          _c("i", { staticClass: "fa fa-ban" })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "button is-link is-small is-block",
+                        attrs: { id: "pageBannerEditlBttn" },
+                        on: {
+                          click: function($event) {
+                            _vm.saveBanner()
+                          }
+                        }
+                      },
+                      [
+                        _c("span", [_vm._v("Salvar")]),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          { staticClass: "icon is-small p-l-10 p-r-10" },
+                          [_c("i", { staticClass: "fa fa-floppy-o" })]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ],
+            1
+          )
         ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-6" }, [
-      _c("div", { attrs: { name: "order" } }, [_vm._v("1º")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -48281,7 +49737,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             switch (this.displayValue) {
                 case 'Campanha Ativa':
                     var type = 'is-success';
-                    this.returnToast(type);
+                    if (this.loading) {
+                        this.changeCampaingValue();
+                    }
                     break;
                 case 'Campanha Inativa':
                     var type = 'is-danger';
@@ -48300,21 +49758,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 type: 'is-danger',
                 hasIcon: true,
                 onConfirm: function onConfirm() {
-                    _this.changeCampaingValue(type);_this.confirmation = true;
+                    _this.loading = true;_this.changeCampaingValue();_this.confirmation = true;
                 },
                 onCancel: function onCancel() {
                     if (!_this.confirmation) {
-                        _this.displayValue = 'Campanha Ativa';
+                        _this.displayValue = 'Campanha Ativa';_this.loading = false;
                     }_this.confirmation = null;
                 }
             });
         },
-        changeCampaingValue: function changeCampaingValue(type) {
-            this.returnToast(type);
-            /*
-            axios.get("http://api.icndb.com/jokes/random/10")
-                .then((response)  =>  { alert(response) })
-            */
+        changeCampaingValue: function changeCampaingValue() {
+            var _this2 = this;
+
+            var loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.$refs.element.$el
+            });
+            setTimeout(function () {
+                return loadingComponent.close();
+            }, 3 * 1000);
+            setTimeout(function () {
+                return _this2.$emit('ajax-complete', 'Alteração salva com sucesso!');
+            }, 3 * 1000);
         },
         returnToast: function returnToast(type) {
             this.$toast.open({
@@ -48322,14 +49786,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 queue: false,
                 type: type,
                 position: 'is-bottom-right'
-                // container: '#app'
             });
         }
     },
     data: function data() {
         return {
             displayValue: this.linkValue,
-            confirmation: null
+            confirmation: null,
+            isFullPage: true,
+            loading: true
         };
     }
 });

@@ -30,6 +30,6 @@ class HomeController extends Controller
       LaraFlash::success("Yay it worked!");
       LaraFlash::danger('Oops Something went wrong!');
       */
-      return view('manage.home');
+      return view('manage.dashboard');
     }
 }

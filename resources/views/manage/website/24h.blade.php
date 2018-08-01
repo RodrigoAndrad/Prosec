@@ -38,7 +38,7 @@
 					</div>
 					<div class="columns m-r-5 m-l-5 m-t-5">
 						<div class="column is-manager-card box-component m-r-5 m-l-5">
-							<image-component :banners="{{@json_encode($banners['elements'])}}" :image-dir="{{@json_encode(asset('') . '/')}}"></image-component>
+							<image-component :banners="{{@json_encode($banners['elements'])}}" :image-dir="{{@json_encode(asset('') . '/')}}" controls="1" link-switch="false" v-on:ajax-complete="returnToast('is-success','Alteração salva com sucesso!')"></image-component>
 						</div>	
 					</div>	
        		    </b-collapse>

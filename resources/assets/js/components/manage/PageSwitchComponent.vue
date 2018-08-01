@@ -20,7 +20,10 @@ export default {
             {
                 case 'Campanha Ativa':
                     var type = 'is-success';
-                    this.returnToast(type);
+                    if(this.loading)
+                    {
+                        this.changeCampaingValue();
+                    }
                     break;
                 case 'Campanha Inativa':
                     var type = 'is-danger';
@@ -36,16 +39,16 @@ export default {
                 confirmText: 'Desabilitar Campanha',
                 type: 'is-danger',
                 hasIcon: true,
-                onConfirm: () => { this.changeCampaingValue(type); this.confirmation = true; },
-                onCancel: () => { if(!this.confirmation){ this.displayValue = 'Campanha Ativa'} this.confirmation = null}
+                onConfirm: () => {this.loading = true; this.changeCampaingValue(); this.confirmation = true;},
+                onCancel: () => { if(!this.confirmation){ this.displayValue = 'Campanha Ativa'; this.loading = false;} this.confirmation = null; }
             })
         },
-        changeCampaingValue: function(type){
-            this.returnToast(type);
-            /*
-            axios.get("http://api.icndb.com/jokes/random/10")
-                .then((response)  =>  { alert(response) })
-            */    
+        changeCampaingValue: function(){
+            const loadingComponent = this.$loading.open({
+                container: this.isFullPage ? null : this.$refs.element.$el
+            })
+            setTimeout(() => loadingComponent.close(), 3 * 1000)
+            setTimeout(() => this.$emit('ajax-complete','Alteração salva com sucesso!'), 3 * 1000);
         },
         returnToast: function(type){
             this.$toast.open({
@@ -53,7 +56,6 @@ export default {
              queue: false,
              type: type,
              position: 'is-bottom-right',
-             // container: '#app'
            })
         }
     },
@@ -61,6 +63,8 @@ export default {
         return{
             displayValue: this.linkValue,
             confirmation: null,
+            isFullPage: true,
+            loading: true
         }
     }
 }

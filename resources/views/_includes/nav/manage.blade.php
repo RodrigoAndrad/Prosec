@@ -146,6 +146,16 @@ var componentes = new Vue({
   created: function() {
     var path = window.location.pathname.split('/');
     switch(path[path.length - 1]) {
+      case 'home':
+        if(path[path.length - 2] === 'content')
+        {
+          this.editorIsOpen = true; 
+        }
+        else
+        {
+          this.generalIsOpen = true;
+        }
+        break;
       case 'dashboard':
           this.generalIsOpen = true;
         break;
@@ -165,7 +175,6 @@ var componentes = new Vue({
           this.adminIsOpen = true;
           this.rolesAndPermissionsIsOpen = true;
         break;      
-      case 'home':
       case 'servicos':
       case 'vig-patrimonial':
       case 'vig-pessoal-escolta':

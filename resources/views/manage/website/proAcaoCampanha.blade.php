@@ -14,12 +14,12 @@
                 			<h1><strong>Pro Ação Campanha</strong> - {{$page->slug}}</h1>
                 		</div>
                 		<div class="column is-right-pulled">
-                			<page-switch-component @if($pageStatus) link-value="Campanha Ativa" @else link-value="Campanha Inativa" @endif></page-switch-component>
+                			<page-switch-component v-on:ajax-complete="returnToast('is-success','Alteração salva com sucesso!')" @if($pageStatus) link-value="Campanha Ativa" @else link-value="Campanha Inativa" @endif></page-switch-component>
                 		</div>
                 	</div>
 				</div>
-				<text-input-component field-value="{{$page->title}}" placeholder-text="Digite aqui o título da página ..." name="pageTitle" label="Título"></text-input-component>
-				<text-area-input-component field-value="{{$page->description}}" placeholder-text="Digite aqui a descrição da página ..." name="pageDescription" label="Descrição"></text-area-input-component>
+				<text-input-component v-on:ajax-complete="returnToast('is-success','Alteração salva com sucesso!')" field-value="{{$page->title}}" placeholder-text="Digite aqui o título da página ..." name="pageTitle" label="Título"></text-input-component>
+				<text-area-input-component v-on:ajax-complete="returnToast('is-success','Alteração salva com sucesso!')" field-value="{{$page->description}}" placeholder-text="Digite aqui a descrição da página ..." name="pageDescription" label="Descrição"></text-area-input-component>
 				<b-collapse :open.sync="isOpen">
 					<div class="panel-heading" slot="trigger">
 						Tags de SEO
@@ -47,7 +47,7 @@
 					</div>
 					<div class="columns m-r-5 m-l-5 m-t-5">
 						<div class="column is-manager-card box-component m-r-5 m-l-5">
-							<image-component :banners="{{@json_encode($banners['elements'])}}" :image-dir="{{@json_encode(asset('') . '/')}}"></image-component>
+							<image-component :banners="{{@json_encode($banners['elements'])}}" :image-dir="{{@json_encode(asset('') . '/')}}" controls="1" link-switch="false" v-on:ajax-complete="returnToast('is-success','Alteração salva com sucesso!')"></image-component>
 						</div>	
 					</div>	
        		    </b-collapse>
@@ -61,7 +61,7 @@
 	         	    @foreach($textIntro['elements'] as $box)
 	         	    	<div class="columns panel-content p-l-20 p-t-20">
 							<div class="column is-manager-card box-component m-r-5 m-l-5">
-			            		<resp-social-box-component name="textBox" :boxes="{{@json_encode($box)}}" :image-dir="{{@json_encode(asset('') . '/')}}" :order="{{@json_encode($loop->iteration)}}"></resp-social-box-component>
+			            		<resp-social-box-component name="textBox" :boxes="{{@json_encode($box)}}" :image-dir="{{@json_encode(asset('') . '/')}}" :order="{{@json_encode($loop->iteration)}}" controls="1" link-switch="false" v-on:ajax-complete="returnToast('is-success','Alteração salva com sucesso!')"></resp-social-box-component>
 							</div>	
 						</div>
 	       		 	@endforeach
@@ -76,7 +76,7 @@
 	         	    @foreach($boxes['elements'][0]['images'] as $box)
 	         	    	<div class="columns panel-content p-l-20 p-t-20">
 							<div class="column is-manager-card box-component m-r-5 m-l-5">
-			            		<multi-image-component :banners="{{ @json_encode($box) }}" :order="{{$loop->iteration}}" :image-dir="{{@json_encode(asset('') . '/')}}"></multi-image-component>
+			            		<multi-image-component :banners="{{@json_encode($box)}}" :image-dir="{{@json_encode(asset('') . '/')}}" controls="1" link-switch="false" v-on:ajax-complete="returnToast('is-success','Alteração salva com sucesso!')" :order="{{$loop->iteration}}"></multi-image-component>
 							</div>	
 						</div>
 	       		 	@endforeach
@@ -95,6 +95,17 @@ var componentes = new Vue({
 		isOpen: false,
 		bannerIsOpen: true,
 		boxIsOpen: true,
+	},
+	methods: {
+		returnToast: function(type,message){
+            this.$toast.open({
+             message: message,
+             queue: false,
+             type: type,
+             position: 'is-bottom-right',
+             // container: '#app'
+           })
+        }
 	}
 });
 </script>

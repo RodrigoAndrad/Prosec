@@ -1,4 +1,4 @@
-<nav class="navbar has-shadow" style="position: fixed; width: 100%; z-index: 999999;">
+<nav class="navbar has-shadow" style="position: fixed; width: 100%; z-index: 50000;">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item is-paddingless brand-item" href="{{route('manage.home')}}">
